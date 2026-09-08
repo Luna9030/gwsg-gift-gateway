@@ -2,15 +2,23 @@
 <html lang="en-SG">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#fffaf6">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <meta
+    name="theme-color"
+    content="#fffaf6"
+  >
 
   <meta
     name="description"
-    content="Choose one Grow Well SG pillar within 10 minutes to view a token of appreciation."
+    content="Choose one Grow Well SG pillar to view your token of appreciation."
   >
 
-  <title>10-Minute Gift Redemption | Grow Well SG</title>
+  <title>Grow Well SG Token of Appreciation</title>
 
   <style>
     :root {
@@ -23,7 +31,7 @@
       --eat: #f4cc09;
       --screen: #ee4d9b;
       --sleep: #009ee2;
-      --danger: #c33737;
+      --danger: #b62929;
 
       --rounded:
         ui-rounded,
@@ -130,7 +138,7 @@
 
     .hero {
       max-width: 850px;
-      margin: 0 auto clamp(28px, 5vw, 46px);
+      margin: 0 auto clamp(30px, 5vw, 50px);
       text-align: center;
     }
 
@@ -180,38 +188,10 @@
     }
 
     .subtitle {
-      margin: 16px 0 0;
+      margin: 18px 0 0;
       color: var(--muted);
       font-size: clamp(1.05rem, 2vw, 1.22rem);
       font-weight: 700;
-    }
-
-    .timer-wrap {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 18px;
-      padding: 10px 16px;
-      border: 1px solid rgba(48, 48, 54, 0.10);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.92);
-      box-shadow: 0 8px 24px rgba(48, 48, 54, 0.06);
-      font-weight: 700;
-    }
-
-    .timer-wrap svg {
-      width: 20px;
-      height: 20px;
-      color: var(--teal);
-    }
-
-    #countdown {
-      min-width: 4.2ch;
-      color: var(--ink);
-      font-family: var(--rounded);
-      font-size: 1.18rem;
-      font-variant-numeric: tabular-nums;
-      font-weight: 900;
     }
 
     .final-note {
@@ -249,10 +229,16 @@
       align-items: center;
       padding: 26px 20px 18px;
       overflow: hidden;
+
       border: 2px solid var(--accent);
       border-radius: 30px;
+
       color: var(--ink);
-      text-decoration: none;
+      font: inherit;
+      text-align: left;
+
+      appearance: none;
+      cursor: pointer;
 
       background:
         linear-gradient(
@@ -262,7 +248,9 @@
           var(--soft) 100%
         );
 
-      box-shadow: 0 18px 44px rgba(48, 48, 54, 0.09);
+      box-shadow:
+        0 18px 44px rgba(48, 48, 54, 0.09);
+
       isolation: isolate;
 
       transition:
@@ -299,12 +287,13 @@
       content: "";
     }
 
-    .card:hover {
+    .card:hover:not(:disabled) {
       transform: translateY(-7px);
-      box-shadow: 0 24px 54px rgba(48, 48, 54, 0.14);
+      box-shadow:
+        0 24px 54px rgba(48, 48, 54, 0.14);
     }
 
-    .card:hover::before {
+    .card:hover:not(:disabled)::before {
       transform: scale(1.14);
     }
 
@@ -313,8 +302,24 @@
       outline-offset: 5px;
     }
 
-    .card:active {
+    .card:active:not(:disabled) {
       transform: translateY(-2px) scale(0.99);
+    }
+
+    .card:disabled {
+      cursor: not-allowed;
+      opacity: 0.42;
+      filter: grayscale(0.4);
+      transform: none;
+      box-shadow: none;
+    }
+
+    .card.selected {
+      opacity: 1;
+      filter: none;
+      transform: translateY(-4px) scale(1.01);
+      box-shadow:
+        0 24px 54px var(--strong);
     }
 
     .exercise {
@@ -353,9 +358,10 @@
       width: 84px;
       height: 94px;
       overflow: visible;
-      filter: drop-shadow(
-        0 7px 8px rgba(48, 48, 54, 0.08)
-      );
+      filter:
+        drop-shadow(
+          0 7px 8px rgba(48, 48, 54, 0.08)
+        );
     }
 
     .title {
@@ -391,24 +397,8 @@
       transition: transform 0.18s ease;
     }
 
-    .card:hover .arrow {
+    .card:hover:not(:disabled) .arrow {
       transform: translate(2px, -2px);
-    }
-
-    .card[aria-disabled="true"] {
-      cursor: not-allowed;
-      opacity: 0.45;
-      filter: grayscale(0.35);
-      pointer-events: none;
-      transform: none;
-      box-shadow: none;
-    }
-
-    .card.selected {
-      opacity: 1;
-      filter: none;
-      transform: translateY(-4px) scale(1.01);
-      box-shadow: 0 24px 54px var(--strong);
     }
 
     .footer {
@@ -428,7 +418,7 @@
       display: grid;
       place-items: center;
       padding: 24px;
-      background: rgba(255, 250, 246, 0.92);
+      background: rgba(255, 250, 246, 0.94);
       backdrop-filter: blur(8px);
     }
 
@@ -437,12 +427,13 @@
     }
 
     .leaving-box {
-      width: min(420px, 100%);
-      padding: 28px;
+      width: min(430px, 100%);
+      padding: 30px;
       border: 1px solid rgba(48, 48, 54, 0.10);
       border-radius: 26px;
       background: #ffffff;
-      box-shadow: 0 20px 60px rgba(48, 48, 54, 0.15);
+      box-shadow:
+        0 20px 60px rgba(48, 48, 54, 0.15);
       text-align: center;
     }
 
@@ -462,6 +453,12 @@
       font-size: 1.35rem;
     }
 
+    .leaving-box p {
+      margin: 9px 0 0;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
     @keyframes spin {
       to {
         transform: rotate(360deg);
@@ -470,11 +467,13 @@
 
     @media (max-width: 1080px) {
       .grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
       }
 
       .title {
-        font-size: clamp(1.85rem, 4vw, 2.2rem);
+        font-size:
+          clamp(1.85rem, 4vw, 2.2rem);
       }
     }
 
@@ -499,7 +498,8 @@
 
       .card {
         min-height: 132px;
-        grid-template-columns: 76px minmax(0, 1fr) 34px;
+        grid-template-columns:
+          76px minmax(0, 1fr) 34px;
         grid-template-rows: 1fr;
         gap: 8px 14px;
         padding: 19px;
@@ -521,7 +521,8 @@
       .title {
         grid-column: 2;
         grid-row: 1;
-        font-size: clamp(1.8rem, 9vw, 2.2rem);
+        font-size:
+          clamp(1.8rem, 9vw, 2.2rem);
       }
 
       .cardfoot {
@@ -547,20 +548,29 @@
 </head>
 
 <body>
-  <a class="skip" href="#pillars">
+
+  <a
+    class="skip"
+    href="#pillars"
+  >
     Skip to pillar choices
   </a>
+
 
   <main class="page">
 
     <header class="hero">
 
-      <div class="brand" aria-label="Grow Well SG">
+      <div
+        class="brand"
+        aria-label="Grow Well SG"
+      >
 
         <svg
           viewBox="0 0 64 56"
           aria-hidden="true"
         >
+
           <path
             fill="#f71946"
             d="M32 53C20 43 4 32 4 17A14 14 0 0 1 29 8l3 4 3-4a14 14 0 0 1 25 9c0 15-16 26-28 36Z"
@@ -570,64 +580,33 @@
             fill="#ffffff"
             d="M31 13c-6 0-9-4-9-8 5 0 9 3 9 8Zm3 0c1-6 4-9 9-10 0 5-3 9-9 10Z"
           />
+
         </svg>
 
         <span>Grow Well SG</span>
 
       </div>
 
+
       <p class="eyebrow">
-        10-minute redemption window
+        Make every healthy moment a family moment
       </p>
+
 
       <h1>
         Choose one pillar
       </h1>
 
+
       <p class="subtitle">
         Check out our token of appreciation.
       </p>
 
-      <div
-        class="timer-wrap"
-        aria-label="Time remaining"
-      >
-
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          aria-hidden="true"
-        >
-          <circle
-            cx="12"
-            cy="13"
-            r="8"
-            stroke="currentColor"
-            stroke-width="2"
-          />
-
-          <path
-            d="M12 9v4l3 2M9 2h6M12 5V2"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
-
-        <span id="countdown">
-          10:00
-        </span>
-
-        <span>
-          remaining
-        </span>
-
-      </div>
 
       <p class="final-note">
-        Choose carefully—your selection is final.
+        One choice only. Your selection cannot be changed.
       </p>
+
 
       <p
         class="status"
@@ -648,13 +627,17 @@
 
       <!--
         EXERCISE WELL
-        Change only the href below when changing the destination.
+
+        To change the resource later, replace only
+        the URL inside data-url="..."
       -->
 
-      <a
+      <button
         class="card exercise"
+        type="button"
         data-pillar="exercise"
-        href="https://www.healthhub.sg/programmes/parent-hub/grow-well-sg/nurture-healthy-behaviours"
+        data-label="Exercise Well"
+        data-url="https://www.healthhub.sg/programmes/parent-hub/grow-well-sg/nurture-healthy-behaviours"
         aria-label="Choose Exercise Well. This selection is final."
       >
 
@@ -720,32 +703,40 @@
 
         </span>
 
+
         <span class="title">
           <span>Exercise</span>
           <span>Well</span>
         </span>
 
+
         <span class="cardfoot">
+
           <span
             class="arrow"
             aria-hidden="true"
           >
             →
           </span>
+
         </span>
 
-      </a>
+      </button>
 
 
       <!--
         EAT WELL
-        Change only the href below when changing the destination.
+
+        To change the resource later, replace only
+        the URL inside data-url="..."
       -->
 
-      <a
+      <button
         class="card eat"
+        type="button"
         data-pillar="eat"
-        href="https://ch-api.healthhub.sg/api/public/content/2ed081967a9748308d94e6bdde70131d?v=570b7ab3"
+        data-label="Eat Well"
+        data-url="https://ch-api.healthhub.sg/api/public/content/2ed081967a9748308d94e6bdde70131d?v=570b7ab3"
         aria-label="Choose Eat Well. This selection is final."
       >
 
@@ -841,32 +832,40 @@
 
         </span>
 
+
         <span class="title">
           <span>Eat</span>
           <span>Well</span>
         </span>
 
+
         <span class="cardfoot">
+
           <span
             class="arrow"
             aria-hidden="true"
           >
             →
           </span>
+
         </span>
 
-      </a>
+      </button>
 
 
       <!--
         SCREEN WELL
-        Change only the href below when changing the destination.
+
+        To change the resource later, replace only
+        the URL inside data-url="..."
       -->
 
-      <a
+      <button
         class="card screen"
+        type="button"
         data-pillar="screen"
-        href="https://syn-p-001.sitecorecontenthub.cloud/api/public/content/fd656cc80d6a4edba97a1407c8323298"
+        data-label="Screen Well"
+        data-url="https://syn-p-001.sitecorecontenthub.cloud/api/public/content/fd656cc80d6a4edba97a1407c8323298"
         aria-label="Choose Screen Well. This selection is final."
       >
 
@@ -937,32 +936,40 @@
 
         </span>
 
+
         <span class="title">
           <span>Screen</span>
           <span>Well</span>
         </span>
 
+
         <span class="cardfoot">
+
           <span
             class="arrow"
             aria-hidden="true"
           >
             →
           </span>
+
         </span>
 
-      </a>
+      </button>
 
 
       <!--
         SLEEP WELL
-        Change only the href below when changing the destination.
+
+        To change the resource later, replace only
+        the URL inside data-url="..."
       -->
 
-      <a
+      <button
         class="card sleep"
+        type="button"
         data-pillar="sleep"
-        href="https://syn-p-001.sitecorecontenthub.cloud/api/public/content/bc9554b4b9674cec8510d709a15da9d4?v=2e9b894c"
+        data-label="Sleep Well"
+        data-url="https://syn-p-001.sitecorecontenthub.cloud/api/public/content/bc9554b4b9674cec8510d709a15da9d4?v=2e9b894c"
         aria-label="Choose Sleep Well. This selection is final."
       >
 
@@ -1046,23 +1053,28 @@
 
         </span>
 
+
         <span class="title">
           <span>Sleep</span>
           <span>Well</span>
         </span>
 
+
         <span class="cardfoot">
+
           <span
             class="arrow"
             aria-hidden="true"
           >
             →
           </span>
+
         </span>
 
-      </a>
+      </button>
 
     </section>
+
 
     <footer class="footer">
       Grow Well SG resource gateway for event participants
@@ -1089,6 +1101,10 @@
         Opening your selected resource…
       </strong>
 
+      <p>
+        Your choice has been saved and cannot be changed.
+      </p>
+
     </div>
 
   </div>
@@ -1099,28 +1115,22 @@
       "use strict";
 
       /*
-        SINGLE-CHOICE SETTINGS
+        IMPORTANT
 
-        A participant's choice is saved in the browser.
+        Keep this key unchanged after publishing.
 
-        location.replace() removes this gateway page from the
-        browser history after the participant makes a choice.
-
-        Change "_v1" to "_v2" only when you intentionally want
-        to reset the saved choice and timer for every browser.
+        Changing the key will reset the saved choice
+        and allow browsers to choose again.
       */
 
-      const CHOICE_KEY = "gwsgGiftChoice_v1";
-      const DEADLINE_KEY = "gwsgGiftDeadline_v1";
+      const STORAGE_KEY = "gwsgGiftChoice_v1";
+      const COOKIE_KEY = "gwsgGiftChoice_v1";
+      const LOCK_NAME = "gwsgGiftChoiceLock_v1";
+      const CHANNEL_NAME = "gwsgGiftChoiceChannel_v1";
 
-      const TEN_MINUTES = 10 * 60 * 1000;
-
-      const cards = Array.from(
+      const buttons = Array.from(
         document.querySelectorAll(".card")
       );
-
-      const countdown =
-        document.getElementById("countdown");
 
       const status =
         document.getElementById("status");
@@ -1128,319 +1138,458 @@
       const overlay =
         document.getElementById("leavingOverlay");
 
-      let isLeaving = false;
-      let timerId = null;
+      let isProcessing = false;
+      let channel = null;
 
 
       /*
-        Saves information in localStorage.
-
-        A cookie is used as a fallback when localStorage
-        is unavailable.
+        Remove the old countdown deadline saved by
+        the previous version of the webpage.
       */
 
-      function setStored(key, value) {
+      try {
+        localStorage.removeItem(
+          "gwsgGiftDeadline_v1"
+        );
+      } catch (error) {
+        /*
+          No action is required if storage is blocked.
+        */
+      }
+
+      document.cookie =
+        "gwsgGiftDeadline_v1=; " +
+        "Max-Age=0; " +
+        "Path=/; " +
+        "SameSite=Lax; " +
+        "Secure";
+
+
+      function getCookie(name) {
+        const prefix = `${name}=`;
+
+        const cookie = document.cookie
+          .split("; ")
+          .find(item =>
+            item.startsWith(prefix)
+          );
+
+        if (!cookie) {
+          return null;
+        }
+
         try {
-          localStorage.setItem(key, value);
-          return;
+          return decodeURIComponent(
+            cookie.slice(prefix.length)
+          );
         } catch (error) {
-          document.cookie =
-            `${key}=${encodeURIComponent(value)}; ` +
-            "Max-Age=31536000; Path=/; SameSite=Lax";
+          return null;
         }
       }
 
 
-      function getStored(key) {
-        try {
-          const value = localStorage.getItem(key);
+      function getCurrentButton(pillar) {
+        return buttons.find(
+          button =>
+            button.dataset.pillar === pillar
+        ) || null;
+      }
 
-          if (value !== null) {
-            return value;
-          }
+
+      /*
+        Validate a saved choice against the four
+        choices currently shown on the webpage.
+      */
+
+      function validateChoice(candidate) {
+        if (
+          !candidate ||
+          typeof candidate !== "object" ||
+          typeof candidate.pillar !== "string"
+        ) {
+          return null;
+        }
+
+        const matchingButton =
+          getCurrentButton(candidate.pillar);
+
+        if (!matchingButton) {
+          return null;
+        }
+
+        return {
+          pillar:
+            matchingButton.dataset.pillar,
+
+          label:
+            matchingButton.dataset.label,
+
+          url:
+            matchingButton.dataset.url,
+
+          selectedAt:
+            candidate.selectedAt || ""
+        };
+      }
+
+
+      function parseChoice(value) {
+        if (!value) {
+          return null;
+        }
+
+        try {
+          return validateChoice(
+            JSON.parse(value)
+          );
+        } catch (error) {
+          return null;
+        }
+      }
+
+
+      /*
+        Read from both local storage and a cookie.
+
+        Using both methods makes the saved choice
+        more persistent in a normal browser.
+      */
+
+      function readSavedChoice() {
+        const possibleValues = [];
+
+        try {
+          possibleValues.push(
+            localStorage.getItem(STORAGE_KEY)
+          );
         } catch (error) {
           /*
-            Continue to the cookie fallback.
+            Continue to the cookie.
           */
         }
 
-        const prefix = `${key}=`;
+        possibleValues.push(
+          getCookie(COOKIE_KEY)
+        );
 
-        const item = document.cookie
-          .split("; ")
-          .find(part => part.startsWith(prefix));
+        for (const value of possibleValues) {
+          const choice = parseChoice(value);
 
-        return item
-          ? decodeURIComponent(item.slice(prefix.length))
-          : null;
+          if (choice) {
+            return choice;
+          }
+        }
+
+        return null;
       }
 
 
       /*
-        Checks whether this browser already made
-        a valid choice.
+        Save before opening the external resource.
+
+        The cookie lasts for one year.
       */
 
-      function getSavedChoice() {
-        const raw = getStored(CHOICE_KEY);
-
-        if (!raw) {
-          return null;
-        }
+      function saveChoice(choice) {
+        const value = JSON.stringify(choice);
 
         try {
-          const saved = JSON.parse(raw);
-
-          const matchingCard = cards.find(card =>
-            card.dataset.pillar === saved.pillar &&
-            card.href === saved.url
+          localStorage.setItem(
+            STORAGE_KEY,
+            value
           );
-
-          return matchingCard
-            ? saved
-            : null;
-
         } catch (error) {
-          return null;
+          /*
+            The cookie below provides a fallback.
+          */
         }
+
+        document.cookie =
+          `${COOKIE_KEY}=` +
+          `${encodeURIComponent(value)}; ` +
+          "Max-Age=31536000; " +
+          "Path=/; " +
+          "SameSite=Lax; " +
+          "Secure";
+      }
+
+
+      function redirectToChoice(choice) {
+        if (!choice || !choice.url) {
+          return;
+        }
+
+        /*
+          replace() removes the gateway from the
+          current browser history entry.
+
+          Pressing Back will therefore not return
+          to the four choices.
+        */
+
+        window.location.replace(
+          choice.url
+        );
       }
 
 
       /*
-        A returning participant is sent back to
-        the resource they previously selected.
+        If this browser already chose a pillar,
+        it is sent only to that same resource.
       */
 
-      function redirectToSavedChoice() {
-        const saved = getSavedChoice();
+      function enforceSavedChoice() {
+        const savedChoice =
+          readSavedChoice();
 
-        if (!saved) {
+        if (!savedChoice) {
           return false;
         }
 
-        window.location.replace(saved.url);
+        redirectToChoice(savedChoice);
         return true;
       }
 
 
-      function disableAllCards(message) {
-        cards.forEach(card => {
-          card.setAttribute(
+      function disableAllButtons(
+        chosenButton = null
+      ) {
+        buttons.forEach(button => {
+          button.disabled = true;
+
+          button.setAttribute(
             "aria-disabled",
             "true"
           );
+        });
 
-          card.setAttribute(
-            "tabindex",
-            "-1"
+        if (chosenButton) {
+          chosenButton.classList.add(
+            "selected"
+          );
+        }
+      }
+
+
+      function showStorageError() {
+        isProcessing = false;
+        overlay.hidden = true;
+
+        buttons.forEach(button => {
+          button.disabled = false;
+
+          button.removeAttribute(
+            "aria-disabled"
+          );
+
+          button.classList.remove(
+            "selected"
           );
         });
 
-        status.textContent = message;
+        status.textContent =
+          "Your browser blocked the storage needed " +
+          "to save a single choice. Please allow " +
+          "cookies or site storage and try again.";
+      }
+
+
+      function notifyOtherTabs() {
+        if (channel) {
+          channel.postMessage({
+            type: "choice-made"
+          });
+        }
       }
 
 
       /*
-        Disables all choices when the
-        10-minute period ends.
+        This is the actual one-choice operation.
+
+        It checks for an earlier choice, saves the
+        first valid choice, verifies that it was saved,
+        and then opens only that resource.
       */
 
-      function expireChoices() {
-        if (timerId) {
-          window.clearInterval(timerId);
-        }
-
-        countdown.textContent = "00:00";
-
-        disableAllCards(
-          "The 10-minute selection period has ended."
-        );
-      }
-
-
-      function updateCountdown(deadline) {
-        const remaining =
-          deadline - Date.now();
-
-        if (remaining <= 0) {
-          expireChoices();
-          return;
-        }
-
-        const totalSeconds =
-          Math.ceil(remaining / 1000);
-
-        const minutes =
-          Math.floor(totalSeconds / 60);
-
-        const seconds =
-          totalSeconds % 60;
-
-        countdown.textContent =
-          `${String(minutes).padStart(2, "0")}:` +
-          `${String(seconds).padStart(2, "0")}`;
-      }
-
-
-      /*
-        The timer starts the first time the participant
-        opens the gateway.
-
-        Refreshing the page does not restart the timer.
-      */
-
-      function getOrCreateDeadline() {
-        const saved =
-          Number(getStored(DEADLINE_KEY));
-
-        if (
-          Number.isFinite(saved) &&
-          saved > 0
-        ) {
-          return saved;
-        }
-
-        const deadline =
-          Date.now() + TEN_MINUTES;
-
-        setStored(
-          DEADLINE_KEY,
-          String(deadline)
-        );
-
-        return deadline;
-      }
-
-
-      /*
-        Handles the final pillar selection.
-      */
-
-      function makeChoice(event) {
-        event.preventDefault();
-
-        const chosenCard =
-          event.currentTarget;
-
-        if (
-          isLeaving ||
-          chosenCard.getAttribute("aria-disabled") === "true"
-        ) {
-          return;
-        }
-
-        const deadline =
-          Number(getStored(DEADLINE_KEY));
-
-        if (
-          !Number.isFinite(deadline) ||
-          Date.now() >= deadline
-        ) {
-          expireChoices();
-          return;
-        }
-
+      function completeChoice(button) {
         const existingChoice =
-          getSavedChoice();
+          readSavedChoice();
 
         if (existingChoice) {
-          window.location.replace(
-            existingChoice.url
+          redirectToChoice(
+            existingChoice
           );
 
           return;
         }
 
-        isLeaving = true;
+        const newChoice = {
+          pillar:
+            button.dataset.pillar,
 
-        const destination =
-          chosenCard.href;
+          label:
+            button.dataset.label,
 
-        setStored(
-          CHOICE_KEY,
-          JSON.stringify({
-            pillar: chosenCard.dataset.pillar,
-            url: destination,
-            selectedAt: new Date().toISOString()
-          })
-        );
+          url:
+            button.dataset.url,
 
-        cards.forEach(card => {
-          card.setAttribute(
-            "aria-disabled",
-            "true"
-          );
+          selectedAt:
+            new Date().toISOString()
+        };
 
-          card.setAttribute(
-            "tabindex",
-            "-1"
-          );
-        });
+        saveChoice(newChoice);
 
-        chosenCard.classList.add(
-          "selected"
-        );
+        /*
+          Confirm that storage worked before leaving
+          the gateway.
+
+          If the browser blocks all storage, the
+          website does not continue with an unrecorded
+          redemption.
+        */
+
+        const savedChoice =
+          readSavedChoice();
+
+        if (!savedChoice) {
+          showStorageError();
+          return;
+        }
+
+        disableAllButtons(button);
+        notifyOtherTabs();
 
         overlay.hidden = false;
 
-        /*
-          replace() prevents the gateway page
-          from remaining as the previous browser page.
-        */
-
         window.setTimeout(() => {
-          window.location.replace(
-            destination
+          redirectToChoice(
+            savedChoice
           );
-        }, 300);
+        }, 250);
       }
 
 
       /*
-        Immediately redirect browsers that
-        previously selected a pillar.
+        Modern browsers such as Microsoft Edge and
+        Google Chrome support Web Locks.
+
+        The lock prevents two already-open tabs from
+        successfully choosing different pillars at
+        almost exactly the same time.
       */
 
-      if (redirectToSavedChoice()) {
-        return;
+      async function processChoice(button) {
+        if (isProcessing) {
+          return;
+        }
+
+        isProcessing = true;
+        disableAllButtons(button);
+        overlay.hidden = false;
+
+        try {
+          if (
+            navigator.locks &&
+            typeof navigator.locks.request ===
+              "function"
+          ) {
+            await navigator.locks.request(
+              LOCK_NAME,
+              () => completeChoice(button)
+            );
+          } else {
+            completeChoice(button);
+          }
+        } catch (error) {
+          showStorageError();
+        }
       }
 
 
-      const deadline =
-        getOrCreateDeadline();
-
-      updateCountdown(deadline);
-
-
-      if (Date.now() < deadline) {
-        timerId = window.setInterval(
-          () => updateCountdown(deadline),
-          1000
+      buttons.forEach(button => {
+        button.addEventListener(
+          "click",
+          () => processChoice(button)
         );
+      });
 
-        cards.forEach(card => {
-          card.addEventListener(
-            "click",
-            makeChoice
+
+      /*
+        Lock all other currently open gateway tabs
+        as soon as one tab makes a choice.
+      */
+
+      if ("BroadcastChannel" in window) {
+        try {
+          channel =
+            new BroadcastChannel(
+              CHANNEL_NAME
+            );
+
+          channel.addEventListener(
+            "message",
+            enforceSavedChoice
           );
-        });
+        } catch (error) {
+          channel = null;
+        }
       }
 
 
       /*
-        Some browsers restore a page from memory when
-        the Back button is used.
+        The storage event also synchronises the
+        selection across multiple browser tabs.
+      */
 
-        This check redirects the participant to their
-        original choice when that happens.
+      window.addEventListener(
+        "storage",
+        event => {
+          if (event.key === STORAGE_KEY) {
+            enforceSavedChoice();
+          }
+        }
+      );
+
+
+      /*
+        Some browsers temporarily keep webpages in
+        memory when Back is pressed.
+
+        These checks immediately enforce the saved
+        selection if the gateway is restored.
       */
 
       window.addEventListener(
         "pageshow",
+        enforceSavedChoice
+      );
+
+      window.addEventListener(
+        "focus",
+        enforceSavedChoice
+      );
+
+      document.addEventListener(
+        "visibilitychange",
         () => {
-          redirectToSavedChoice();
+          if (
+            document.visibilityState ===
+            "visible"
+          ) {
+            enforceSavedChoice();
+          }
         }
       );
+
+
+      /*
+        Check immediately when the page opens.
+
+        A returning participant will not be shown
+        the other three choices.
+      */
+
+      enforceSavedChoice();
 
     })();
   </script>
