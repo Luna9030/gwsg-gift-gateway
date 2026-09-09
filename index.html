@@ -1,1614 +1,2080 @@
 <!doctype html>
 <html lang="en-SG">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#fffaf6">
-  <meta
-    name="description"
-    content="Thank you for your time, please Choose an area that you are interested in, more resources are available in ParentHub."
-  >
-
-  <title>Grow Well SG Token of Appreciation</title>
-
-  <style>
-    :root {
-      --ink: #303036;
-      --muted: #66666f;
-      --paper: #fffaf6;
-      --teal: #00aaa6;
-      --active: #f58a1f;
-      --eat: #f4cc09;
-      --screen: #ee4d9b;
-      --sleep: #009ee2;
-      --danger: #b62929;
-
-      --rounded:
-        ui-rounded,
-        "Arial Rounded MT Bold",
-        "Trebuchet MS",
-        Arial,
-        sans-serif;
-
-      --body:
-        Arial,
-        Helvetica,
-        sans-serif;
-    }
-
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-    }
-
-    html {
-      min-width: 320px;
-      background: var(--paper);
-    }
-
-    body {
-      min-height: 100vh;
-      min-height: 100svh;
-      margin: 0;
-      overflow-x: hidden;
-      color: var(--ink);
-      font-family: var(--body);
-
-      background:
-        radial-gradient(
-          circle at 7% 8%,
-          rgba(0, 170, 166, 0.10) 0 90px,
-          transparent 91px
-        ),
-        radial-gradient(
-          circle at 92% 10%,
-          rgba(244, 204, 9, 0.14) 0 118px,
-          transparent 119px
-        ),
-        radial-gradient(
-          circle at 95% 94%,
-          rgba(238, 77, 155, 0.09) 0 155px,
-          transparent 156px
-        ),
-        linear-gradient(
-          180deg,
-          #ffffff 0%,
-          var(--paper) 100%
-        );
-    }
-
-    body::before,
-    body::after {
-      position: fixed;
-      z-index: -1;
-      width: 190px;
-      height: 190px;
-      border-radius: 48% 52% 63% 37% / 41% 45% 55% 59%;
-      content: "";
-      pointer-events: none;
-    }
-
-    body::before {
-      top: -92px;
-      left: -62px;
-      background: rgba(245, 138, 31, 0.10);
-      transform: rotate(22deg);
-    }
-
-    body::after {
-      right: -82px;
-      bottom: -94px;
-      background: rgba(0, 158, 226, 0.09);
-      transform: rotate(-18deg);
-    }
-
-    .page {
-      width: min(1240px, calc(100% - 32px));
-      margin: 0 auto;
-      padding: clamp(28px, 5vw, 60px) 0 34px;
-    }
-
-    .hero {
-      max-width: 850px;
-      margin: 0 auto clamp(30px, 5vw, 50px);
-      text-align: center;
-    }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 20px;
-      padding: 8px 15px 8px 10px;
-      border: 1px solid rgba(48, 48, 54, 0.09);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.90);
-      box-shadow: 0 8px 24px rgba(48, 48, 54, 0.06);
-    }
-
-    .brand svg {
-      width: 35px;
-      height: 31px;
-      flex: 0 0 auto;
-    }
-
-    .brand span {
-      font-family: var(--rounded);
-      font-weight: 900;
-      letter-spacing: 0.01em;
-    }
-
-    .eyebrow {
-      margin: 0 0 12px;
-      color: #008f8b;
-      font-family: var(--rounded);
-      font-size: clamp(0.76rem, 1.5vw, 0.92rem);
-      font-weight: 900;
-      letter-spacing: 0.13em;
-      line-height: 1.4;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      margin: 0;
-      font-family: var(--rounded);
-      font-size: clamp(2.35rem, 6vw, 4.7rem);
-      font-weight: 900;
-      letter-spacing: -0.045em;
-      line-height: 0.98;
-      text-wrap: balance;
-    }
-
-    .subtitle {
-      margin: 18px 0 0;
-      color: var(--muted);
-      font-size: clamp(1.05rem, 2vw, 1.22rem);
-      font-weight: 700;
-    }
-
-    .final-note {
-      margin: 12px 0 0;
-      color: var(--muted);
-      font-size: 0.9rem;
-      font-weight: 700;
-    }
-
-    .status {
-      min-height: 1.4em;
-      margin: 12px 0 0;
-      color: #087d79;
-      font-size: 0.94rem;
-      font-weight: 800;
-    }
-
-    .status.error {
-      color: var(--danger);
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .card {
-      --accent: var(--teal);
-      --soft: rgba(0, 170, 166, 0.08);
-      --strong: rgba(0, 170, 166, 0.17);
-
-      position: relative;
-      display: grid;
-      min-height: 178px;
-      grid-template-columns: 84px minmax(0, 1fr);
-      grid-template-rows: 1fr auto;
-      gap: 12px 14px;
-      align-items: center;
-      padding: 26px 20px 18px;
-      overflow: hidden;
-
-      border: 2px solid var(--accent);
-      border-radius: 30px;
-
-      color: var(--ink);
-      font: inherit;
-      text-align: left;
-
-      appearance: none;
-      cursor: pointer;
-
-      background:
-        linear-gradient(
-          145deg,
-          #ffffff 0%,
-          #ffffff 62%,
-          var(--soft) 100%
-        );
-
-      box-shadow:
-        0 18px 44px rgba(48, 48, 54, 0.09);
-
-      isolation: isolate;
-
-      transition:
-        transform 0.18s ease,
-        box-shadow 0.18s ease,
-        opacity 0.18s ease,
-        filter 0.18s ease;
-
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .card::before {
-      position: absolute;
-      z-index: -1;
-      top: -55px;
-      right: -46px;
-      width: 130px;
-      height: 130px;
-      border-radius: 50%;
-      content: "";
-      background: var(--strong);
-      transition: transform 0.22s ease;
-    }
-
-    .card::after {
-      position: absolute;
-      z-index: -1;
-      bottom: -48px;
-      left: -36px;
-      width: 94px;
-      height: 94px;
-      border: 18px solid var(--soft);
-      border-radius: 50%;
-      content: "";
-    }
-
-    .card:hover:not(:disabled) {
-      transform: translateY(-7px);
-      box-shadow:
-        0 24px 54px rgba(48, 48, 54, 0.14);
-    }
-
-    .card:hover:not(:disabled)::before {
-      transform: scale(1.14);
-    }
-
-    .card:focus-visible {
-      outline: 4px solid var(--ink);
-      outline-offset: 5px;
-    }
-
-    .card:active:not(:disabled) {
-      transform: translateY(-2px) scale(0.99);
-    }
-
-    .card:disabled {
-      cursor: not-allowed;
-      opacity: 0.30;
-      filter: grayscale(0.75);
-      transform: none;
-      box-shadow: none;
-    }
-
-    .card.selected {
-      opacity: 1;
-      filter: none;
-      transform: translateY(-4px) scale(1.01);
-      box-shadow:
-        0 24px 54px var(--strong);
-    }
-
-    .exercise {
-      --accent: var(--active);
-      --soft: rgba(245, 138, 31, 0.08);
-      --strong: rgba(245, 138, 31, 0.18);
-    }
-
-    .eat {
-      --accent: var(--eat);
-      --soft: rgba(244, 204, 9, 0.10);
-      --strong: rgba(244, 204, 9, 0.21);
-    }
-
-    .screen {
-      --accent: var(--screen);
-      --soft: rgba(238, 77, 155, 0.08);
-      --strong: rgba(238, 77, 155, 0.17);
-    }
-
-    .sleep {
-      --accent: var(--sleep);
-      --soft: rgba(0, 158, 226, 0.08);
-      --strong: rgba(0, 158, 226, 0.17);
-    }
-
-    .iconbox {
-      display: grid;
-      width: 84px;
-      height: 102px;
-      place-items: center;
-    }
-
-    .icon {
-      display: block;
-      width: 84px;
-      height: 94px;
-      overflow: visible;
-
-      filter:
-        drop-shadow(
-          0 7px 8px rgba(48, 48, 54, 0.08)
-        );
-    }
-
-    .title {
-      margin: 0;
-      font-family: var(--rounded);
-      font-size: clamp(1.65rem, 2.2vw, 2rem);
-      font-weight: 900;
-      letter-spacing: -0.035em;
-      line-height: 0.98;
-    }
-
-    .title span {
-      display: block;
-    }
-
-    .cardfoot {
-      display: flex;
-      grid-column: 1 / -1;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-    }
-
-    .selected-label {
-      display: none;
-      padding: 6px 10px;
-      border-radius: 999px;
-      color: var(--ink);
-      font-size: 0.74rem;
-      font-weight: 900;
-      background: var(--strong);
-    }
-
-    .card.selected .selected-label {
-      display: inline-flex;
-    }
-
-    .arrow {
-      display: inline-grid;
-      width: 34px;
-      height: 34px;
-      margin-left: auto;
-      place-items: center;
-      border-radius: 50%;
-      color: #ffffff;
-      font-size: 1.08rem;
-      font-weight: 900;
-      background: var(--accent);
-      box-shadow: 0 7px 16px var(--strong);
-      transition: transform 0.18s ease;
-    }
-
-    .card:hover:not(:disabled) .arrow {
-      transform: translate(2px, -2px);
-    }
-
-    .footer {
-      margin-top: clamp(32px, 5vw, 54px);
-      padding-top: 18px;
-      border-top: 1px solid rgba(48, 48, 54, 0.08);
-      color: #777780;
-      font-size: 0.82rem;
-      line-height: 1.5;
-      text-align: center;
-    }
-
-    @media (max-width: 1080px) {
-      .grid {
-        grid-template-columns:
-          repeat(2, minmax(0, 1fr));
-      }
-
-      .title {
-        font-size:
-          clamp(1.85rem, 4vw, 2.2rem);
-      }
-    }
-
-    @media (max-width: 580px) {
-      .page {
-        width: min(100% - 24px, 520px);
-        padding-top: 22px;
-      }
-
-      .hero {
-        margin-bottom: 28px;
-      }
-
-      .brand {
-        margin-bottom: 16px;
-      }
-
-      .grid {
-        grid-template-columns: 1fr;
-        gap: 13px;
-      }
-
-      .card {
-        min-height: 132px;
-        grid-template-columns:
-          76px minmax(0, 1fr) 34px;
-        grid-template-rows: 1fr;
-        gap: 8px 14px;
-        padding: 19px;
-        border-radius: 25px;
-      }
-
-      .iconbox {
-        width: 76px;
-        height: 88px;
-        grid-column: 1;
-        grid-row: 1;
-      }
-
-      .icon {
-        width: 76px;
-        height: 86px;
-      }
-
-      .title {
-        grid-column: 2;
-        grid-row: 1;
-        font-size:
-          clamp(1.8rem, 9vw, 2.2rem);
-      }
-
-      .cardfoot {
-        display: contents;
-      }
-
-      .selected-label {
-        display: none !important;
-      }
-
-      .arrow {
-        grid-column: 3;
-        grid-row: 1;
-        align-self: center;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        transition-duration: 0.01ms !important;
-      }
-    }
-  </style>
+
+<meta charset="utf-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1"
+>
+
+<meta
+  name="theme-color"
+  content="#fffaf6"
+>
+
+<title>Grow Well SG – Token of Appreciation</title>
+
+
+<style>
+
+:root {
+
+  --ink:#303036;
+  --muted:#66666f;
+  --paper:#fffaf6;
+
+  --teal:#00aaa6;
+  --active:#f58a1f;
+  --eat:#f4cc09;
+  --screen:#ee4d9b;
+  --sleep:#009ee2;
+
+  --rounded:
+    ui-rounded,
+    "Arial Rounded MT Bold",
+    "Trebuchet MS",
+    Arial,
+    sans-serif;
+
+  --body:
+    Arial,
+    Helvetica,
+    sans-serif;
+}
+
+
+*,
+*::before,
+*::after {
+  box-sizing:border-box;
+}
+
+
+html {
+  min-width:320px;
+  background:var(--paper);
+}
+
+
+body {
+
+  min-height:100vh;
+  margin:0;
+  overflow-x:hidden;
+
+  color:var(--ink);
+  font-family:var(--body);
+
+  background:
+
+    radial-gradient(
+      circle at 7% 8%,
+      rgba(0,170,166,.10) 0 90px,
+      transparent 91px
+    ),
+
+    radial-gradient(
+      circle at 92% 10%,
+      rgba(244,204,9,.14) 0 118px,
+      transparent 119px
+    ),
+
+    radial-gradient(
+      circle at 95% 94%,
+      rgba(238,77,155,.09) 0 155px,
+      transparent 156px
+    ),
+
+    linear-gradient(
+      180deg,
+      #fff 0%,
+      var(--paper) 100%
+    );
+}
+
+
+.page {
+
+  width:min(
+    1240px,
+    calc(100% - 32px)
+  );
+
+  margin:0 auto;
+
+  padding:
+    clamp(28px,5vw,60px)
+    0
+    34px;
+}
+
+
+/* -----------------------
+   HERO
+----------------------- */
+
+.hero {
+
+  max-width:900px;
+
+  margin:
+    0 auto
+    clamp(30px,5vw,50px);
+
+  text-align:center;
+}
+
+
+.brand {
+
+  display:inline-flex;
+
+  align-items:center;
+
+  gap:10px;
+
+  margin-bottom:20px;
+
+  padding:
+    8px 15px
+    8px 10px;
+
+  border:
+    1px solid
+    rgba(48,48,54,.09);
+
+  border-radius:999px;
+
+  background:
+    rgba(255,255,255,.9);
+
+  box-shadow:
+    0 8px 24px
+    rgba(48,48,54,.06);
+}
+
+
+.brand svg {
+
+  width:35px;
+  height:31px;
+
+  flex:0 0 auto;
+}
+
+
+.brand span {
+
+  font-family:
+    var(--rounded);
+
+  font-weight:900;
+}
+
+
+.eyebrow {
+
+  margin:
+    0 0 12px;
+
+  color:#008f8b;
+
+  font-family:
+    var(--rounded);
+
+  font-size:
+    clamp(
+      .76rem,
+      1.5vw,
+      .92rem
+    );
+
+  font-weight:900;
+
+  letter-spacing:.13em;
+
+  line-height:1.4;
+
+  text-transform:uppercase;
+}
+
+
+h1 {
+
+  max-width:900px;
+
+  margin:
+    0 auto;
+
+  font-family:
+    var(--rounded);
+
+  font-size:
+    clamp(
+      2.2rem,
+      5.4vw,
+      4.4rem
+    );
+
+  font-weight:900;
+
+  letter-spacing:-.045em;
+
+  line-height:1;
+
+  text-wrap:balance;
+}
+
+
+.subtitle {
+
+  margin:
+    18px 0 0;
+
+  color:
+    var(--muted);
+
+  font-size:
+    clamp(
+      1.05rem,
+      2vw,
+      1.22rem
+    );
+
+  font-weight:700;
+}
+
+
+.final-note {
+
+  margin:
+    12px 0 0;
+
+  color:
+    var(--muted);
+
+  font-size:.94rem;
+
+  font-weight:700;
+}
+
+
+/* -----------------------
+   STATUS AFTER SELECTION
+----------------------- */
+
+.status {
+
+  max-width:760px;
+
+  min-height:1.4em;
+
+  margin:
+    18px auto 0;
+
+  color:#303036;
+
+  font-size:1rem;
+
+  line-height:1.5;
+}
+
+
+.status:empty {
+
+  display:none;
+}
+
+
+.status strong {
+
+  display:block;
+
+  margin-bottom:2px;
+
+  color:#303036;
+
+  font-family:
+    var(--rounded);
+
+  font-size:
+    1.15rem;
+
+  font-weight:900;
+}
+
+
+.status a {
+
+  color:#087d79;
+
+  font-weight:800;
+
+  text-decoration:underline;
+
+  text-underline-offset:2px;
+}
+
+
+/* -----------------------
+   FOUR PILLARS
+----------------------- */
+
+.grid {
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(
+      4,
+      minmax(0,1fr)
+    );
+
+  gap:16px;
+}
+
+
+.card {
+
+  --accent:var(--teal);
+  --soft:rgba(0,170,166,.08);
+  --strong:rgba(0,170,166,.17);
+
+  position:relative;
+
+  display:grid;
+
+  min-height:178px;
+
+  grid-template-columns:
+    84px
+    minmax(0,1fr);
+
+  grid-template-rows:
+    1fr auto;
+
+  gap:
+    12px 14px;
+
+  align-items:center;
+
+  padding:
+    26px 20px 18px;
+
+  overflow:hidden;
+
+  border:
+    2px solid
+    var(--accent);
+
+  border-radius:30px;
+
+  color:var(--ink);
+
+  font:inherit;
+
+  text-align:left;
+
+  appearance:none;
+
+  cursor:pointer;
+
+  background:
+
+    linear-gradient(
+      145deg,
+      #fff 0%,
+      #fff 62%,
+      var(--soft) 100%
+    );
+
+  box-shadow:
+
+    0 18px 44px
+    rgba(48,48,54,.09);
+
+  isolation:isolate;
+
+  transition:
+    transform .18s ease,
+    box-shadow .18s ease,
+    opacity .18s ease,
+    filter .18s ease;
+
+  -webkit-tap-highlight-color:
+    transparent;
+}
+
+
+.card::before {
+
+  position:absolute;
+
+  z-index:-1;
+
+  top:-55px;
+
+  right:-46px;
+
+  width:130px;
+
+  height:130px;
+
+  border-radius:50%;
+
+  content:"";
+
+  background:
+    var(--strong);
+}
+
+
+.card::after {
+
+  position:absolute;
+
+  z-index:-1;
+
+  bottom:-48px;
+
+  left:-36px;
+
+  width:94px;
+
+  height:94px;
+
+  border:
+    18px solid
+    var(--soft);
+
+  border-radius:50%;
+
+  content:"";
+}
+
+
+.card:hover:not(:disabled) {
+
+  transform:
+    translateY(-7px);
+
+  box-shadow:
+    0 24px 54px
+    rgba(48,48,54,.14);
+}
+
+
+.card:focus-visible {
+
+  outline:
+    4px solid
+    var(--ink);
+
+  outline-offset:5px;
+}
+
+
+.card:disabled {
+
+  cursor:not-allowed;
+
+  opacity:.30;
+
+  filter:
+    grayscale(.75);
+
+  transform:none;
+
+  box-shadow:none;
+}
+
+
+.card.selected {
+
+  opacity:1;
+
+  filter:none;
+
+  transform:
+    translateY(-4px)
+    scale(1.01);
+
+  box-shadow:
+    0 24px 54px
+    var(--strong);
+}
+
+
+/* -----------------------
+   PILLAR COLOURS
+----------------------- */
+
+.exercise {
+
+  --accent:
+    var(--active);
+
+  --soft:
+    rgba(245,138,31,.08);
+
+  --strong:
+    rgba(245,138,31,.18);
+}
+
+
+.eat {
+
+  --accent:
+    var(--eat);
+
+  --soft:
+    rgba(244,204,9,.10);
+
+  --strong:
+    rgba(244,204,9,.21);
+}
+
+
+.screen {
+
+  --accent:
+    var(--screen);
+
+  --soft:
+    rgba(238,77,155,.08);
+
+  --strong:
+    rgba(238,77,155,.17);
+}
+
+
+.sleep {
+
+  --accent:
+    var(--sleep);
+
+  --soft:
+    rgba(0,158,226,.08);
+
+  --strong:
+    rgba(0,158,226,.17);
+}
+
+
+/* -----------------------
+   ICONS
+----------------------- */
+
+.iconbox {
+
+  display:grid;
+
+  width:84px;
+
+  height:102px;
+
+  place-items:center;
+}
+
+
+.icon {
+
+  display:block;
+
+  width:84px;
+
+  height:94px;
+
+  overflow:visible;
+
+  filter:
+    drop-shadow(
+      0 7px 8px
+      rgba(48,48,54,.08)
+    );
+}
+
+
+.title {
+
+  margin:0;
+
+  font-family:
+    var(--rounded);
+
+  font-size:
+    clamp(
+      1.65rem,
+      2.2vw,
+      2rem
+    );
+
+  font-weight:900;
+
+  letter-spacing:-.035em;
+
+  line-height:.98;
+}
+
+
+.title span {
+
+  display:block;
+}
+
+
+.cardfoot {
+
+  display:flex;
+
+  grid-column:
+    1 / -1;
+
+  align-items:center;
+
+  justify-content:
+    space-between;
+
+  gap:10px;
+}
+
+
+.selected-label {
+
+  display:none;
+
+  padding:
+    6px 10px;
+
+  border-radius:
+    999px;
+
+  color:
+    var(--ink);
+
+  font-size:
+    .74rem;
+
+  font-weight:900;
+
+  background:
+    var(--strong);
+}
+
+
+.card.selected
+.selected-label {
+
+  display:inline-flex;
+}
+
+
+.arrow {
+
+  display:inline-grid;
+
+  width:34px;
+
+  height:34px;
+
+  margin-left:auto;
+
+  place-items:center;
+
+  border-radius:50%;
+
+  color:#fff;
+
+  font-size:1.08rem;
+
+  font-weight:900;
+
+  background:
+    var(--accent);
+
+  box-shadow:
+    0 7px 16px
+    var(--strong);
+}
+
+
+.footer {
+
+  margin-top:
+    clamp(
+      32px,
+      5vw,
+      54px
+    );
+
+  padding-top:18px;
+
+  border-top:
+    1px solid
+    rgba(48,48,54,.08);
+
+  color:#777780;
+
+  font-size:.82rem;
+
+  text-align:center;
+}
+
+
+/* -----------------------
+   MOBILE
+----------------------- */
+
+@media
+(max-width:1080px) {
+
+  .grid {
+
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0,1fr)
+      );
+  }
+}
+
+
+@media
+(max-width:580px) {
+
+  .page {
+
+    width:
+      min(
+        100% - 24px,
+        520px
+      );
+
+    padding-top:22px;
+  }
+
+
+  .grid {
+
+    grid-template-columns:
+      1fr;
+
+    gap:13px;
+  }
+
+
+  .card {
+
+    min-height:132px;
+
+    grid-template-columns:
+      76px
+      minmax(0,1fr)
+      34px;
+
+    grid-template-rows:
+      1fr;
+
+    gap:
+      8px 14px;
+
+    padding:19px;
+
+    border-radius:25px;
+  }
+
+
+  .iconbox {
+
+    width:76px;
+
+    height:88px;
+
+    grid-column:1;
+
+    grid-row:1;
+  }
+
+
+  .icon {
+
+    width:76px;
+
+    height:86px;
+  }
+
+
+  .title {
+
+    grid-column:2;
+
+    grid-row:1;
+
+    font-size:
+      clamp(
+        1.8rem,
+        9vw,
+        2.2rem
+      );
+  }
+
+
+  .cardfoot {
+
+    display:contents;
+  }
+
+
+  .selected-label {
+
+    display:none !important;
+  }
+
+
+  .arrow {
+
+    grid-column:3;
+
+    grid-row:1;
+
+    align-self:center;
+  }
+
+}
+
+</style>
+
 </head>
+
 
 <body>
 
-  <main class="page">
 
-    <header class="hero">
-
-      <div
-        class="brand"
-        aria-label="Grow Well SG"
-      >
-
-        <svg
-          viewBox="0 0 64 56"
-          aria-hidden="true"
-        >
-
-          <path
-            fill="#f71946"
-            d="M32 53C20 43 4 32 4 17A14 14 0 0 1 29 8l3 4 3-4a14 14 0 0 1 25 9c0 15-16 26-28 36Z"
-          />
-
-          <path
-            fill="#ffffff"
-            d="M31 13c-6 0-9-4-9-8 5 0 9 3 9 8Zm3 0c1-6 4-9 9-10 0 5-3 9-9 10Z"
-          />
-
-        </svg>
-
-        <span>Grow Well SG</span>
-
-      </div>
+<main class="page">
 
 
-      <p class="eyebrow">
-        Got 10 minutes to receive our token of appreciation?
-      </p>
+<header class="hero">
 
 
-      <h1>
-        Choose your desired pillar
-      </h1>
+  <!-- GROW WELL SG BRAND -->
 
+  <div
+    class="brand"
+    aria-label="Grow Well SG"
+  >
 
-      <p class="subtitle">
-        Check out our token of appreciation.
-      </p>
-
-
-      <p class="final-note">
-        One pillar only. After your selection, the other three choices will be locked.
-      </p>
-
-
-      <p
-        class="status"
-        id="status"
-        role="status"
-        aria-live="polite"
-      ></p>
-
-    </header>
-
-
-    <section
-      class="grid"
-      id="pillars"
-      aria-label="Grow Well SG token of appreciation resources"
+    <svg
+      viewBox="0 0 64 56"
+      aria-hidden="true"
     >
 
+      <path
+        fill="#f71946"
+        d="M32 53C20 43 4 32 4 17A14 14 0 0 1 29 8l3 4 3-4a14 14 0 0 1 25 9c0 15-16 26-28 36Z"
+      />
 
-      <!--
-        EXERCISE WELL
-
-        To change the destination later, replace only
-        the URL inside data-url="..."
-      -->
-
-      <button
-        class="card exercise"
-        type="button"
-        data-pillar="exercise"
-        data-label="Exercise Well"
-        data-url="https://www.healthhub.sg/programmes/parent-hub/grow-well-sg/nurture-healthy-behaviours"
-        aria-label="Choose Exercise Well"
-      >
-
-        <span
-          class="iconbox"
-          aria-hidden="true"
-        >
-
-          <svg
-            class="icon"
-            viewBox="0 0 96 96"
-          >
-
-            <ellipse
-              cx="48"
-              cy="83"
-              rx="35"
-              ry="5"
-              fill="#303036"
-              opacity="0.10"
-            />
-
-            <path
-              d="M54 8c8 2 13 5 15 10l-9 25-22-8 8-23c1-4 4-5 8-4Z"
-              fill="#ffd2c2"
-            />
-
-            <path
-              d="M34 34l28 10-8 20-29-10Z"
-              fill="#ffcf4a"
-            />
-
-            <path
-              d="M30 41l27 10-3 8-27-10Z"
-              fill="#725fd4"
-            />
-
-            <path
-              d="M22 49c8 4 17 8 28 10 7 2 15 2 22 5 6 3 9 8 8 13-1 5-5 8-11 8H24c-8 0-13-4-13-10 0-5 4-9 11-13Z"
-              fill="#7364d9"
-            />
-
-            <path
-              d="M17 72h57c3 0 5 2 5 5s-2 5-5 5H23c-7 0-11-3-12-8 2-1 4-2 6-2Z"
-              fill="#f5a24a"
-            />
-
-            <path
-              d="M38 55l17 6M34 61l16 5"
-              stroke="#ffffff"
-              stroke-width="3.5"
-              stroke-linecap="round"
-            />
-
-            <path
-              d="M8 82h13M3 88h9"
-              stroke="#4d437f"
-              stroke-width="3.5"
-              stroke-linecap="round"
-            />
-
-          </svg>
-
-        </span>
-
-
-        <span class="title">
-          <span>Exercise</span>
-          <span>Well</span>
-        </span>
-
-
-        <span class="cardfoot">
-
-          <span class="selected-label">
-            Selected
-          </span>
-
-          <span
-            class="arrow"
-            aria-hidden="true"
-          >
-            ↗
-          </span>
-
-        </span>
-
-      </button>
-
-
-      <!--
-        EAT WELL
-
-        To change the destination later, replace only
-        the URL inside data-url="..."
-      -->
-
-      <button
-        class="card eat"
-        type="button"
-        data-pillar="eat"
-        data-label="Eat Well"
-        data-url="https://ch-api.healthhub.sg/api/public/content/2ed081967a9748308d94e6bdde70131d?v=570b7ab3"
-        aria-label="Choose Eat Well"
-      >
-
-        <span
-          class="iconbox"
-          aria-hidden="true"
-        >
-
-          <svg
-            class="icon"
-            viewBox="0 0 96 96"
-          >
-
-            <circle
-              cx="48"
-              cy="48"
-              r="40"
-              fill="#ffffff"
-              stroke="#d9d9d9"
-              stroke-width="4"
-            />
-
-            <path
-              d="M48 12A36 36 0 0 0 16 31l32 17Z"
-              fill="#f6c845"
-            />
-
-            <path
-              d="M16 31a36 36 0 0 0 0 34l32-17Z"
-              fill="#8bcf69"
-            />
-
-            <path
-              d="M16 65a36 36 0 0 0 32 19V48Z"
-              fill="#f3a74f"
-            />
-
-            <path
-              d="M48 12a36 36 0 0 1 32 19L48 48Z"
-              fill="#6fc56f"
-            />
-
-            <path
-              d="M80 31a36 36 0 0 1 0 34L48 48Z"
-              fill="#f4e3b2"
-            />
-
-            <path
-              d="M80 65A36 36 0 0 1 48 84V48Z"
-              fill="#f16f68"
-            />
-
-            <circle
-              cx="36"
-              cy="29"
-              r="5"
-              fill="#ffffff"
-              opacity="0.8"
-            />
-
-            <circle
-              cx="65"
-              cy="30"
-              r="5"
-              fill="#e24f46"
-            />
-
-            <path
-              d="M63 24c2-3 5-4 7-4-1 3-3 5-7 6Z"
-              fill="#398f4b"
-            />
-
-            <path
-              d="M29 57c7-8 15-8 22 0-7 8-15 8-22 0Z"
-              fill="#4aa95b"
-            />
-
-            <circle
-              cx="66"
-              cy="67"
-              r="7"
-              fill="#f2cc37"
-            />
-
-            <path
-              d="M48 12v72M16 31l64 34M16 65l64-34"
-              stroke="#ffffff"
-              stroke-width="3"
-              opacity="0.95"
-            />
-
-          </svg>
-
-        </span>
-
-
-        <span class="title">
-          <span>Eat</span>
-          <span>Well</span>
-        </span>
-
-
-        <span class="cardfoot">
-
-          <span class="selected-label">
-            Selected
-          </span>
-
-          <span
-            class="arrow"
-            aria-hidden="true"
-          >
-            ↗
-          </span>
-
-        </span>
-
-      </button>
-
-
-      <!--
-        SCREEN WELL
-
-        To change the destination later, replace only
-        the URL inside data-url="..."
-      -->
-
-      <button
-        class="card screen"
-        type="button"
-        data-pillar="screen"
-        data-label="Screen Well"
-        data-url="https://syn-p-001.sitecorecontenthub.cloud/api/public/content/fd656cc80d6a4edba97a1407c8323298"
-        aria-label="Choose Screen Well"
-      >
-
-        <span
-          class="iconbox"
-          aria-hidden="true"
-        >
-
-          <svg
-            class="icon"
-            viewBox="0 0 96 96"
-          >
-
-            <circle
-              cx="48"
-              cy="48"
-              r="39"
-              fill="#f0e8f8"
-            />
-
-            <g transform="rotate(12 48 48)">
-
-              <rect
-                x="30"
-                y="9"
-                width="36"
-                height="78"
-                rx="6"
-                fill="#6948a8"
-              />
-
-              <rect
-                x="34"
-                y="17"
-                width="28"
-                height="60"
-                rx="2"
-                fill="#a98bd7"
-              />
-
-              <path
-                d="M38 67 59 25M43 72l18-37"
-                stroke="#ffffff"
-                stroke-width="3"
-                stroke-linecap="round"
-                opacity="0.9"
-              />
-
-              <circle
-                cx="48"
-                cy="82"
-                r="2.5"
-                fill="#d9c8ee"
-              />
-
-              <rect
-                x="43"
-                y="12"
-                width="10"
-                height="2"
-                rx="1"
-                fill="#d9c8ee"
-              />
-
-            </g>
-
-          </svg>
-
-        </span>
-
-
-        <span class="title">
-          <span>Screen</span>
-          <span>Well</span>
-        </span>
-
-
-        <span class="cardfoot">
-
-          <span class="selected-label">
-            Selected
-          </span>
-
-          <span
-            class="arrow"
-            aria-hidden="true"
-          >
-            ↗
-          </span>
-
-        </span>
-
-      </button>
-
-
-      <!--
-        SLEEP WELL
-
-        To change the destination later, replace only
-        the URL inside data-url="..."
-      -->
-
-      <button
-        class="card sleep"
-        type="button"
-        data-pillar="sleep"
-        data-label="Sleep Well"
-        data-url="https://syn-p-001.sitecorecontenthub.cloud/api/public/content/bc9554b4b9674cec8510d709a15da9d4?v=2e9b894c"
-        aria-label="Choose Sleep Well"
-      >
-
-        <span
-          class="iconbox"
-          aria-hidden="true"
-        >
-
-          <svg
-            class="icon"
-            viewBox="0 0 96 96"
-          >
-
-            <rect
-              x="12"
-              y="49"
-              width="72"
-              height="21"
-              rx="3"
-              fill="#9c4e1f"
-            />
-
-            <rect
-              x="18"
-              y="42"
-              width="60"
-              height="17"
-              rx="7"
-              fill="#ffffff"
-            />
-
-            <path
-              d="M41 45h32c5 0 8 4 8 8v8H41Z"
-              fill="#6fc660"
-            />
-
-            <rect
-              x="21"
-              y="45"
-              width="24"
-              height="12"
-              rx="6"
-              fill="#f5d84e"
-            />
-
-            <rect
-              x="9"
-              y="32"
-              width="8"
-              height="53"
-              rx="2"
-              fill="#a65423"
-            />
-
-            <rect
-              x="79"
-              y="52"
-              width="8"
-              height="33"
-              rx="2"
-              fill="#a65423"
-            />
-
-            <path
-              d="M37 16h24c5 0 9 4 9 9v12c0 5-4 9-9 9H49l-8 7 2-7h-6c-5 0-9-4-9-9V25c0-5 4-9 9-9Z"
-              fill="#f2cf0b"
-            />
-
-            <text
-              x="36"
-              y="34"
-              fill="#ffffff"
-              font-family="Arial, sans-serif"
-              font-size="14"
-              font-weight="900"
-            >
-              ZZ
-            </text>
-
-          </svg>
-
-        </span>
-
-
-        <span class="title">
-          <span>Sleep</span>
-          <span>Well</span>
-        </span>
-
-
-        <span class="cardfoot">
-
-          <span class="selected-label">
-            Selected
-          </span>
-
-          <span
-            class="arrow"
-            aria-hidden="true"
-          >
-            ↗
-          </span>
-
-        </span>
-
-      </button>
-
-    </section>
-
-
-    <footer class="footer">
-      Grow Well SG resource gateway for event participants
-    </footer>
-
-  </main>
-
-
-  <script>
-    (() => {
-      "use strict";
-
-      /*
-        This is a new storage key.
-
-        The previous version used gwsgGiftChoice_v1
-        and automatically redirected some browsers
-        to Eat Well.
-      */
-
-      const STORAGE_KEY =
-        "gwsgOnePillarChoice_v4";
-
-      const COOKIE_KEY =
-        "gwsgOnePillarChoice_v4";
-
-      const CHANNEL_NAME =
-        "gwsgOnePillarChoiceChannel_v4";
-
-
-      /*
-        These are the saved settings used by the
-        earlier versions.
-
-        They are removed so the previous Eat Well
-        redirect and countdown do not continue.
-      */
-
-      const LEGACY_KEYS = [
-        "gwsgGiftChoice_v1",
-        "gwsgGiftChoice_v2",
-        "gwsgGiftChoice_v3",
-        "gwsgGiftDeadline_v1"
-      ];
-
-
-      const cards = Array.from(
-        document.querySelectorAll(".card")
+      <path
+        fill="#fff"
+        d="M31 13c-6 0-9-4-9-8 5 0 9 3 9 8Zm3 0c1-6 4-9 9-10 0 5-3 9-9 10Z"
+      />
+
+    </svg>
+
+    <span>
+      Grow Well SG
+    </span>
+
+  </div>
+
+
+
+  <!-- NEW COPY -->
+
+  <p class="eyebrow">
+    GOT 10 MINUTES TO RECEIVE OUR TOKEN OF APPRECIATION?
+  </p>
+
+
+  <h1>
+    How would you like to take care of yourself and your family?
+  </h1>
+
+
+  <p class="subtitle">
+    Pick one to get started and receive a token of appreciation!
+  </p>
+
+
+  <p class="final-note">
+    Choose one here, then explore other Grow Well SG spots to unlock the rest.
+  </p>
+
+
+  <!-- MESSAGE APPEARS AFTER CHOICE -->
+
+  <p
+    class="status"
+    id="status"
+    role="status"
+    aria-live="polite"
+  ></p>
+
+
+</header>
+
+
+
+<section
+  class="grid"
+  id="pillars"
+  aria-label="Grow Well SG choices"
+>
+
+
+<!-- =================================================
+     EXERCISE WELL
+================================================== -->
+
+<button
+  class="card exercise"
+  type="button"
+  data-pillar="exercise"
+  data-label="Exercise Well"
+
+  data-url="https://www.healthhub.sg/programmes/parent-hub/grow-well-sg/nurture-healthy-behaviours"
+>
+
+
+<span
+  class="iconbox"
+  aria-hidden="true"
+>
+
+
+<svg
+  class="icon"
+  viewBox="0 0 96 96"
+>
+
+
+<ellipse
+  cx="48"
+  cy="83"
+  rx="35"
+  ry="5"
+  fill="#303036"
+  opacity=".10"
+/>
+
+
+<path
+  d="M54 8c8 2 13 5 15 10l-9 25-22-8 8-23c1-4 4-5 8-4Z"
+  fill="#ffd2c2"
+/>
+
+
+<path
+  d="M34 34l28 10-8 20-29-10Z"
+  fill="#ffcf4a"
+/>
+
+
+<path
+  d="M30 41l27 10-3 8-27-10Z"
+  fill="#725fd4"
+/>
+
+
+<path
+  d="M22 49c8 4 17 8 28 10 7 2 15 2 22 5 6 3 9 8 8 13-1 5-5 8-11 8H24c-8 0-13-4-13-10 0-5 4-9 11-13Z"
+  fill="#7364d9"
+/>
+
+
+<path
+  d="M17 72h57c3 0 5 2 5 5s-2 5-5 5H23c-7 0-11-3-12-8 2-1 4-2 6-2Z"
+  fill="#f5a24a"
+/>
+
+
+<path
+  d="M38 55l17 6M34 61l16 5"
+  stroke="#fff"
+  stroke-width="3.5"
+  stroke-linecap="round"
+/>
+
+
+</svg>
+
+
+</span>
+
+
+<span class="title">
+
+  <span>
+    Exercise
+  </span>
+
+  <span>
+    Well
+  </span>
+
+</span>
+
+
+<span class="cardfoot">
+
+  <span class="selected-label">
+    Selected
+  </span>
+
+  <span
+    class="arrow"
+    aria-hidden="true"
+  >
+    ↗
+  </span>
+
+</span>
+
+
+</button>
+
+
+
+<!-- =================================================
+     EAT WELL
+================================================== -->
+
+<button
+  class="card eat"
+  type="button"
+  data-pillar="eat"
+  data-label="Eat Well"
+
+  data-url="https://ch-api.healthhub.sg/api/public/content/2ed081967a9748308d94e6bdde70131d?v=570b7ab3"
+>
+
+
+<span
+  class="iconbox"
+  aria-hidden="true"
+>
+
+
+<svg
+  class="icon"
+  viewBox="0 0 96 96"
+>
+
+
+<circle
+  cx="48"
+  cy="48"
+  r="40"
+  fill="#fff"
+  stroke="#d9d9d9"
+  stroke-width="4"
+/>
+
+
+<path
+  d="M48 12A36 36 0 0 0 16 31l32 17Z"
+  fill="#f6c845"
+/>
+
+
+<path
+  d="M16 31a36 36 0 0 0 0 34l32-17Z"
+  fill="#8bcf69"
+/>
+
+
+<path
+  d="M16 65a36 36 0 0 0 32 19V48Z"
+  fill="#f3a74f"
+/>
+
+
+<path
+  d="M48 12a36 36 0 0 1 32 19L48 48Z"
+  fill="#6fc56f"
+/>
+
+
+<path
+  d="M80 31a36 36 0 0 1 0 34L48 48Z"
+  fill="#f4e3b2"
+/>
+
+
+<path
+  d="M80 65A36 36 0 0 1 48 84V48Z"
+  fill="#f16f68"
+/>
+
+
+<circle
+  cx="65"
+  cy="30"
+  r="5"
+  fill="#e24f46"
+/>
+
+
+<circle
+  cx="66"
+  cy="67"
+  r="7"
+  fill="#f2cc37"
+/>
+
+
+<path
+  d="M48 12v72M16 31l64 34M16 65l64-34"
+  stroke="#fff"
+  stroke-width="3"
+/>
+
+
+</svg>
+
+
+</span>
+
+
+<span class="title">
+
+  <span>
+    Eat
+  </span>
+
+  <span>
+    Well
+  </span>
+
+</span>
+
+
+<span class="cardfoot">
+
+  <span class="selected-label">
+    Selected
+  </span>
+
+  <span
+    class="arrow"
+    aria-hidden="true"
+  >
+    ↗
+  </span>
+
+</span>
+
+
+</button>
+
+
+
+<!-- =================================================
+     SCREEN WELL
+================================================== -->
+
+<button
+  class="card screen"
+  type="button"
+  data-pillar="screen"
+  data-label="Screen Well"
+
+  data-url="https://syn-p-001.sitecorecontenthub.cloud/api/public/content/fd656cc80d6a4edba97a1407c8323298"
+>
+
+
+<span
+  class="iconbox"
+  aria-hidden="true"
+>
+
+
+<svg
+  class="icon"
+  viewBox="0 0 96 96"
+>
+
+
+<circle
+  cx="48"
+  cy="48"
+  r="39"
+  fill="#f0e8f8"
+/>
+
+
+<g
+  transform="
+    rotate(12 48 48)
+  "
+>
+
+
+<rect
+  x="30"
+  y="9"
+  width="36"
+  height="78"
+  rx="6"
+  fill="#6948a8"
+/>
+
+
+<rect
+  x="34"
+  y="17"
+  width="28"
+  height="60"
+  rx="2"
+  fill="#a98bd7"
+/>
+
+
+<path
+  d="M38 67 59 25M43 72l18-37"
+  stroke="#fff"
+  stroke-width="3"
+  stroke-linecap="round"
+/>
+
+
+<circle
+  cx="48"
+  cy="82"
+  r="2.5"
+  fill="#d9c8ee"
+/>
+
+
+</g>
+
+
+</svg>
+
+
+</span>
+
+
+<span class="title">
+
+  <span>
+    Screen
+  </span>
+
+  <span>
+    Well
+  </span>
+
+</span>
+
+
+<span class="cardfoot">
+
+  <span class="selected-label">
+    Selected
+  </span>
+
+  <span
+    class="arrow"
+    aria-hidden="true"
+  >
+    ↗
+  </span>
+
+</span>
+
+
+</button>
+
+
+
+<!-- =================================================
+     SLEEP WELL
+================================================== -->
+
+<button
+  class="card sleep"
+  type="button"
+  data-pillar="sleep"
+  data-label="Sleep Well"
+
+  data-url="https://syn-p-001.sitecorecontenthub.cloud/api/public/content/bc9554b4b9674cec8510d709a15da9d4?v=2e9b894c"
+>
+
+
+<span
+  class="iconbox"
+  aria-hidden="true"
+>
+
+
+<svg
+  class="icon"
+  viewBox="0 0 96 96"
+>
+
+
+<rect
+  x="12"
+  y="49"
+  width="72"
+  height="21"
+  rx="3"
+  fill="#9c4e1f"
+/>
+
+
+<rect
+  x="18"
+  y="42"
+  width="60"
+  height="17"
+  rx="7"
+  fill="#fff"
+/>
+
+
+<path
+  d="M41 45h32c5 0 8 4 8 8v8H41Z"
+  fill="#6fc660"
+/>
+
+
+<rect
+  x="21"
+  y="45"
+  width="24"
+  height="12"
+  rx="6"
+  fill="#f5d84e"
+/>
+
+
+<rect
+  x="9"
+  y="32"
+  width="8"
+  height="53"
+  rx="2"
+  fill="#a65423"
+/>
+
+
+<rect
+  x="79"
+  y="52"
+  width="8"
+  height="33"
+  rx="2"
+  fill="#a65423"
+/>
+
+
+<path
+  d="M37 16h24c5 0 9 4 9 9v12c0 5-4 9-9 9H49l-8 7 2-7h-6c-5 0-9-4-9-9V25c0-5 4-9 9-9Z"
+  fill="#f2cf0b"
+/>
+
+
+<text
+  x="36"
+  y="34"
+  fill="#fff"
+  font-family="Arial"
+  font-size="14"
+  font-weight="900"
+>
+ZZ
+</text>
+
+
+</svg>
+
+
+</span>
+
+
+<span class="title">
+
+  <span>
+    Sleep
+  </span>
+
+  <span>
+    Well
+  </span>
+
+</span>
+
+
+<span class="cardfoot">
+
+  <span class="selected-label">
+    Selected
+  </span>
+
+  <span
+    class="arrow"
+    aria-hidden="true"
+  >
+    ↗
+  </span>
+
+</span>
+
+
+</button>
+
+
+</section>
+
+
+
+<footer class="footer">
+
+  Grow Well SG resource gateway for event participants
+
+</footer>
+
+
+</main>
+
+
+
+<script>
+
+(() => {
+
+"use strict";
+
+
+/*
+====================================================
+SINGLE CHOICE LOGIC
+
+This version uses localStorage only.
+No cookie is created.
+
+Once one pillar is selected:
+- that pillar remains available;
+- the other three become disabled;
+- closing the resource does NOT unlock them;
+- reopening this gateway keeps them locked.
+====================================================
+*/
+
+
+const STORAGE_KEY =
+  "gwsgSelectedPillar_final_v1";
+
+
+const cards =
+  Array.from(
+    document.querySelectorAll(
+      ".card"
+    )
+  );
+
+
+const status =
+  document.getElementById(
+    "status"
+  );
+
+
+let opening =
+  false;
+
+
+
+/*
+====================================================
+REMOVE OLD TEST DATA
+
+These keys were used by previous versions.
+
+This prevents an old Eat Well selection from
+automatically affecting the new version.
+
+This DOES NOT remove the current final key.
+====================================================
+*/
+
+
+const OLD_KEYS = [
+
+  "gwsgGiftChoice_v1",
+
+  "gwsgGiftChoice_v2",
+
+  "gwsgGiftChoice_v3",
+
+  "gwsgOnePillarChoice_v4",
+
+  "gwsgGiftDeadline_v1"
+
+];
+
+
+OLD_KEYS.forEach(
+  key => {
+
+    try {
+
+      localStorage.removeItem(
+        key
       );
 
-      const status =
-        document.getElementById("status");
-
-      let opening = false;
-      let channel = null;
-
-
-      function expireCookie(name) {
-        document.cookie =
-          `${name}=; ` +
-          "Max-Age=0; " +
-          "Path=/; " +
-          "SameSite=Lax";
-      }
-
-
-      /*
-        Remove all settings from the previous
-        broken versions.
-      */
-
-      for (const key of LEGACY_KEYS) {
-        try {
-          localStorage.removeItem(key);
-        } catch (error) {
-          /*
-            Continue with cookie cleanup.
-          */
-        }
-
-        expireCookie(key);
-      }
-
-
-      function getCookie(name) {
-        const prefix = `${name}=`;
-
-        const item = document.cookie
-          .split("; ")
-          .find(part =>
-            part.startsWith(prefix)
-          );
-
-        if (!item) {
-          return null;
-        }
-
-        try {
-          return decodeURIComponent(
-            item.slice(prefix.length)
-          );
-        } catch (error) {
-          return null;
-        }
-      }
-
-
-      function cardForPillar(pillar) {
-        return cards.find(
-          card =>
-            card.dataset.pillar === pillar
-        ) || null;
-      }
-
-
-      /*
-        Verify that a saved choice matches one of
-        the four current pillar buttons.
-      */
-
-      function validateChoice(value) {
-        if (
-          !value ||
-          typeof value !== "object"
-        ) {
-          return null;
-        }
-
-        const selectedCard =
-          cardForPillar(value.pillar);
-
-        if (!selectedCard) {
-          return null;
-        }
-
-        return {
-          pillar:
-            selectedCard.dataset.pillar,
-
-          label:
-            selectedCard.dataset.label,
-
-          url:
-            selectedCard.dataset.url,
-
-          selectedAt:
-            value.selectedAt || ""
-        };
-      }
-
-
-      function parseChoice(raw) {
-        if (!raw) {
-          return null;
-        }
-
-        try {
-          return validateChoice(
-            JSON.parse(raw)
-          );
-        } catch (error) {
-          return null;
-        }
-      }
-
-
-      /*
-        Read the participant's saved pillar.
-
-        Local storage is the main method.
-        A cookie is used as a fallback.
-      */
-
-      function readChoice() {
-        try {
-          const fromStorage =
-            parseChoice(
-              localStorage.getItem(
-                STORAGE_KEY
-              )
-            );
-
-          if (fromStorage) {
-            return fromStorage;
-          }
-        } catch (error) {
-          /*
-            Continue to cookie fallback.
-          */
-        }
-
-        return parseChoice(
-          getCookie(COOKIE_KEY)
-        );
-      }
-
-
-      /*
-        Save the selected pillar before opening
-        the resource.
-      */
-
-      function saveChoice(choice) {
-        const raw =
-          JSON.stringify(choice);
-
-        try {
-          localStorage.setItem(
-            STORAGE_KEY,
-            raw
-          );
-        } catch (error) {
-          /*
-            Cookie fallback below.
-          */
-        }
-
-        document.cookie =
-          `${COOKIE_KEY}=` +
-          `${encodeURIComponent(raw)}; ` +
-          "Max-Age=31536000; " +
-          "Path=/; " +
-          "SameSite=Lax; " +
-          "Secure";
-      }
-
-
-      /*
-        Keep only the selected pillar available.
-
-        The selected pillar can reopen the same
-        resource. The other three are disabled.
-      */
-
-      function applyLockedState(choice) {
-        cards.forEach(card => {
-          const isSelected =
-            card.dataset.pillar ===
-            choice.pillar;
-
-          card.disabled =
-            !isSelected;
-
-          card.classList.toggle(
-            "selected",
-            isSelected
-          );
-
-          card.setAttribute(
-            "aria-pressed",
-            isSelected
-              ? "true"
-              : "false"
-          );
-
-          if (isSelected) {
-            card.setAttribute(
-              "aria-label",
-              `Open your selected ${choice.label} resource again`
-            );
-          } else {
-            card.setAttribute(
-              "aria-label",
-              `${card.dataset.label} is locked because ${choice.label} was selected`
-            );
-          }
-        });
-
-        status.classList.remove(
-          "error"
-        );
-
-        status.textContent =
-          `${choice.label} has been selected. ` +
-          "You may view more resources in Parent Hub, or visit other places in Punggol and stand a chance to unlock the other resources.";
-      }
-
-
-      function restoreUnlockedState() {
-        cards.forEach(card => {
-          card.disabled = false;
-
-          card.classList.remove(
-            "selected"
-          );
-
-          card.removeAttribute(
-            "aria-pressed"
-          );
-
-          card.setAttribute(
-            "aria-label",
-            `Choose ${card.dataset.label}`
-          );
-        });
-      }
-
-
-      /*
-        Open the resource in a separate tab.
-
-        The gateway remains open and visibly shows
-        that the other three pillars are locked.
-      */
-
-      function openResource(url) {
-        const link =
-          document.createElement("a");
-
-        link.href = url;
-        link.target = "_blank";
-        link.rel =
-          "noopener noreferrer";
-
-        link.style.display =
-          "none";
-
-        document.body.appendChild(
-          link
-        );
-
-        link.click();
-        link.remove();
-      }
-
-
-      /*
-        Inform any other open gateway tabs that
-        a pillar has been selected.
-      */
-
-      function announceChoice() {
-        if (channel) {
-          channel.postMessage({
-            type: "choice-made"
-          });
-        }
-      }
-
-
-      /*
-        Process a pillar click.
-
-        If there is already a saved choice, only
-        that same selected resource can open.
-      */
-
-      function choosePillar(card) {
-        if (opening) {
-          return;
-        }
-
-        opening = true;
-
-        const existing =
-          readChoice();
-
-
-        /*
-          A choice already exists.
-
-          Do not allow a different pillar.
-          Reopen only the selected pillar.
-        */
-
-        if (existing) {
-          applyLockedState(
-            existing
-          );
-
-          if (
-            existing.pillar ===
-            card.dataset.pillar
-          ) {
-            openResource(
-              existing.url
-            );
-          }
-
-          window.setTimeout(() => {
-            opening = false;
-          }, 700);
-
-          return;
-        }
-
-
-        /*
-          No choice exists yet, so save the first
-          pillar selected.
-        */
-
-        const newChoice = {
-          pillar:
-            card.dataset.pillar,
-
-          label:
-            card.dataset.label,
-
-          url:
-            card.dataset.url,
-
-          selectedAt:
-            new Date().toISOString()
-        };
-
-
-        saveChoice(newChoice);
-
-
-        /*
-          Confirm the choice was saved successfully
-          before opening the resource.
-        */
-
-        const verifiedChoice =
-          readChoice();
-
-        if (!verifiedChoice) {
-          restoreUnlockedState();
-
-          status.classList.add(
-            "error"
-          );
-
-          status.textContent =
-            "Your browser blocked the storage needed " +
-            "to lock the other choices. Please allow " +
-            "cookies or site storage and try again.";
-
-          opening = false;
-          return;
-        }
-
-
-        applyLockedState(
-          verifiedChoice
-        );
-
-        announceChoice();
-
-        openResource(
-          verifiedChoice.url
-        );
-
-
-        window.setTimeout(() => {
-          opening = false;
-        }, 700);
-      }
-
-
-      cards.forEach(card => {
-        card.addEventListener(
-          "click",
-          () => choosePillar(card)
-        );
-      });
-
-
-      /*
-        Synchronise the selection between multiple
-        gateway tabs in the same browser.
-      */
-
-      if (
-        "BroadcastChannel" in window
-      ) {
-        try {
-          channel =
-            new BroadcastChannel(
-              CHANNEL_NAME
-            );
-
-          channel.addEventListener(
-            "message",
-            () => {
-              const choice =
-                readChoice();
-
-              if (choice) {
-                applyLockedState(
-                  choice
-                );
-              }
-            }
-          );
-        } catch (error) {
-          channel = null;
-        }
-      }
-
-
-      /*
-        Also detect the saved choice through
-        local-storage changes in other tabs.
-      */
-
-      window.addEventListener(
-        "storage",
-        event => {
-          if (
-            event.key ===
-            STORAGE_KEY
-          ) {
-            const choice =
-              readChoice();
-
-            if (choice) {
-              applyLockedState(
-                choice
-              );
-            }
-          }
-        }
+    }
+
+    catch(error) {
+
+      /* Nothing required */
+
+    }
+
+  }
+);
+
+
+
+/*
+====================================================
+GET THE CARD FOR A PILLAR
+====================================================
+*/
+
+
+function getCard(
+  pillar
+) {
+
+  return cards.find(
+    card =>
+      card.dataset.pillar
+      === pillar
+  ) || null;
+
+}
+
+
+
+/*
+====================================================
+READ SAVED CHOICE
+====================================================
+*/
+
+
+function readChoice() {
+
+  try {
+
+    const pillar =
+      localStorage.getItem(
+        STORAGE_KEY
       );
 
 
-      /*
-        Refresh the locked state when the participant
-        returns from the resource tab or reopens
-        the gateway.
+    if(!pillar) {
 
-        This does not automatically open any resource.
-      */
+      return null;
 
-      function refreshLock() {
-        const choice =
-          readChoice();
-
-        if (choice) {
-          applyLockedState(
-            choice
-          );
-        }
-      }
+    }
 
 
-      window.addEventListener(
-        "pageshow",
-        refreshLock
-      );
-
-      window.addEventListener(
-        "focus",
-        refreshLock
+    const card =
+      getCard(
+        pillar
       );
 
 
-      document.addEventListener(
-        "visibilitychange",
-        () => {
-          if (
-            document.visibilityState ===
-            "visible"
-          ) {
-            refreshLock();
-          }
-        }
+    if(!card) {
+
+      return null;
+
+    }
+
+
+    return {
+
+      pillar:
+        card.dataset.pillar,
+
+      label:
+        card.dataset.label,
+
+      url:
+        card.dataset.url
+
+    };
+
+  }
+
+  catch(error) {
+
+    return null;
+
+  }
+
+}
+
+
+
+/*
+====================================================
+SAVE FIRST CHOICE
+====================================================
+*/
+
+
+function saveChoice(
+  pillar
+) {
+
+  try {
+
+    localStorage.setItem(
+      STORAGE_KEY,
+      pillar
+    );
+
+
+    return (
+      localStorage.getItem(
+        STORAGE_KEY
+      )
+      === pillar
+    );
+
+  }
+
+  catch(error) {
+
+    return false;
+
+  }
+
+}
+
+
+
+/*
+====================================================
+LOCK THE OTHER THREE PILLARS
+====================================================
+*/
+
+
+function applyLockedState(
+  choice
+) {
+
+  cards.forEach(
+    card => {
+
+      const selected =
+
+        card.dataset.pillar
+        === choice.pillar;
+
+
+      card.disabled =
+        !selected;
+
+
+      card.classList.toggle(
+        "selected",
+        selected
       );
 
 
-      /*
-        Check for an existing choice when the gateway
-        first opens.
+      if(selected) {
 
-        Important: this only locks the buttons.
-        It never automatically opens Eat Well or
-        any other resource.
-      */
+        card.setAttribute(
+          "aria-label",
 
-      const savedChoice =
-        readChoice();
-
-      if (savedChoice) {
-        applyLockedState(
-          savedChoice
+          `Open your selected ${choice.label} resource`
         );
+
       }
 
-    })();
-  </script>
+      else {
+
+        card.setAttribute(
+          "aria-label",
+
+          `${card.dataset.label} is locked`
+        );
+
+      }
+
+    }
+  );
+
+
+  /*
+  ------------------------------------------
+  MESSAGE SHOWN AFTER SELECTION
+  ------------------------------------------
+  */
+
+
+  status.innerHTML =
+
+    `<strong>You’ve chosen ${choice.label}!</strong>` +
+
+    `Discover more health resources on ` +
+
+    `<a
+      href="https://www.healthhub.sg/programmes/parent-hub/grow-well-sg"
+      target="_blank"
+      rel="noopener noreferrer"
+    >Parent Hub</a>, ` +
+
+    `or visit other Grow Well SG spots ` +
+
+    `to unlock more activities.`;
+
+}
+
+
+
+/*
+====================================================
+OPEN RESOURCE IN A NEW TAB
+====================================================
+*/
+
+
+function openResource(
+  url
+) {
+
+  window.open(
+    url,
+    "_blank",
+    "noopener,noreferrer"
+  );
+
+}
+
+
+
+/*
+====================================================
+WHEN A PILLAR IS CLICKED
+====================================================
+*/
+
+
+function choosePillar(
+  card
+) {
+
+
+  if(opening) {
+
+    return;
+
+  }
+
+
+  opening =
+    true;
+
+
+
+  /*
+  ------------------------------------------
+  CHECK IF A CHOICE ALREADY EXISTS
+  ------------------------------------------
+  */
+
+
+  const existing =
+    readChoice();
+
+
+  if(existing) {
+
+
+    applyLockedState(
+      existing
+    );
+
+
+    /*
+    Only the SAME selected pillar
+    can be reopened.
+    */
+
+
+    if(
+
+      existing.pillar
+      === card.dataset.pillar
+
+    ) {
+
+      openResource(
+        existing.url
+      );
+
+    }
+
+
+    opening =
+      false;
+
+
+    return;
+
+  }
+
+
+
+  /*
+  ------------------------------------------
+  THIS IS THE FIRST CHOICE
+  ------------------------------------------
+  */
+
+
+  const pillar =
+    card.dataset.pillar;
+
+
+  const saved =
+    saveChoice(
+      pillar
+    );
+
+
+
+  /*
+  ------------------------------------------
+  IF BROWSER STORAGE IS BLOCKED
+
+  We do NOT open the resource because we
+  cannot guarantee single-choice behaviour.
+  ------------------------------------------
+  */
+
+
+  if(!saved) {
+
+
+    status.innerHTML =
+
+      `<strong>We couldn't save your selection.</strong>` +
+
+      `Please allow site storage in your browser and try again.`;
+
+
+
+    opening =
+      false;
+
+
+    return;
+
+  }
+
+
+
+  /*
+  ------------------------------------------
+  VERIFY AND LOCK
+  ------------------------------------------
+  */
+
+
+  const choice =
+    readChoice();
+
+
+  if(!choice) {
+
+
+    opening =
+      false;
+
+
+    return;
+
+  }
+
+
+
+  applyLockedState(
+    choice
+  );
+
+
+
+  /*
+  ------------------------------------------
+  OPEN ONLY THE CHOSEN RESOURCE
+  ------------------------------------------
+  */
+
+
+  openResource(
+    choice.url
+  );
+
+
+
+  setTimeout(
+    () => {
+
+      opening =
+        false;
+
+    },
+
+    500
+  );
+
+}
+
+
+
+/*
+====================================================
+ADD CLICK EVENTS
+====================================================
+*/
+
+
+cards.forEach(
+  card => {
+
+    card.addEventListener(
+      "click",
+
+      () =>
+        choosePillar(
+          card
+        )
+    );
+
+  }
+);
+
+
+
+/*
+====================================================
+IF USER RETURNS TO THE GATEWAY
+
+Do NOT automatically open any resource.
+
+Simply restore the locked state.
+====================================================
+*/
+
+
+function refreshState() {
+
+
+  const choice =
+    readChoice();
+
+
+  if(choice) {
+
+    applyLockedState(
+      choice
+    );
+
+  }
+
+}
+
+
+
+/*
+====================================================
+CHECK WHEN PAGE FIRST LOADS
+====================================================
+*/
+
+
+refreshState();
+
+
+
+/*
+====================================================
+CHECK AGAIN WHEN USER RETURNS FROM RESOURCE
+====================================================
+*/
+
+
+window.addEventListener(
+  "focus",
+  refreshState
+);
+
+
+window.addEventListener(
+  "pageshow",
+  refreshState
+);
+
+
+
+/*
+====================================================
+SYNC MULTIPLE OPEN TABS
+
+If someone has two gateway tabs open and chooses
+a pillar in one tab, the other tab immediately
+locks the other three choices.
+====================================================
+*/
+
+
+window.addEventListener(
+  "storage",
+
+  event => {
+
+
+    if(
+
+      event.key
+      === STORAGE_KEY
+
+    ) {
+
+      refreshState();
+
+    }
+
+  }
+);
+
+
+})();
+
+</script>
+
 
 </body>
+
 </html>
