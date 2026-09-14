@@ -1,242 +1,944 @@
-<!-- =====================================================
-     GROW WELL SG TEXT UPDATE
-     Paste this entire block immediately before </body>
-====================================================== -->
+<!doctype html>
+<html lang="en-SG">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Grow Well SG</title>
 
 <style>
-  /* Hide the previous subtitle line */
-  .subtitle {
-    display: none !important;
+:root{
+  --ink:#303036;
+  --muted:#66666f;
+  --paper:#fffaf6;
+  --active:#f58a1f;
+  --eat:#f4cc09;
+  --screen:#ee4d9b;
+  --sleep:#009ee2;
+  --rounded:ui-rounded,"Arial Rounded MT Bold","Trebuchet MS",Arial,sans-serif;
+  --body:Arial,Helvetica,sans-serif;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  background:var(--paper);
+}
+
+body{
+  margin:0;
+  min-height:100vh;
+  color:var(--ink);
+  font-family:var(--body);
+
+  background:
+    radial-gradient(circle at 6% 7%,rgba(0,170,166,.10) 0 90px,transparent 91px),
+    radial-gradient(circle at 92% 10%,rgba(244,204,9,.14) 0 120px,transparent 121px),
+    radial-gradient(circle at 95% 95%,rgba(238,77,155,.08) 0 160px,transparent 161px),
+    linear-gradient(180deg,#fff 0%,#fffaf6 100%);
+}
+
+.page{
+  width:min(1220px,calc(100% - 32px));
+  margin:0 auto;
+  padding:40px 0 34px;
+}
+
+.hero{
+  max-width:920px;
+  margin:0 auto 40px;
+  text-align:center;
+}
+
+/* LOGO */
+
+.logo{
+  display:block;
+  width:120px;
+  max-width:32vw;
+  height:auto;
+  margin:0 auto 22px;
+}
+
+/* TEXT */
+
+.eyebrow{
+  margin:0 0 12px;
+  color:#008f8b;
+  font-family:var(--rounded);
+  font-size:clamp(.8rem,1.5vw,.95rem);
+  font-weight:900;
+  letter-spacing:.11em;
+  line-height:1.4;
+  text-transform:uppercase;
+}
+
+h1{
+  margin:0;
+  font-family:var(--rounded);
+  font-size:clamp(2.2rem,5vw,4.2rem);
+  font-weight:900;
+  letter-spacing:-.045em;
+  line-height:1;
+}
+
+.subtext{
+  margin:18px 0 0;
+  color:var(--muted);
+  font-size:clamp(1rem,2vw,1.18rem);
+  font-weight:700;
+}
+
+.status{
+  max-width:760px;
+  margin:20px auto 0;
+  color:#303036;
+  font-size:1rem;
+  line-height:1.5;
+}
+
+.status:empty{
+  display:none;
+}
+
+.status strong{
+  display:block;
+  margin-bottom:2px;
+  font-family:var(--rounded);
+  font-size:1.15rem;
+  font-weight:900;
+}
+
+.status a{
+  color:#34788c;
+  font-weight:700;
+  text-decoration:underline;
+  text-underline-offset:2px;
+}
+
+/* GRID */
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:16px;
+}
+
+.card{
+  --accent:#00aaa6;
+  --soft:rgba(0,170,166,.08);
+  --strong:rgba(0,170,166,.18);
+
+  position:relative;
+  display:grid;
+  min-height:180px;
+  grid-template-columns:82px minmax(0,1fr);
+  grid-template-rows:1fr auto;
+  gap:12px 14px;
+  align-items:center;
+
+  padding:24px 20px 18px;
+
+  border:2px solid var(--accent);
+  border-radius:28px;
+
+  color:var(--ink);
+  font:inherit;
+  text-align:left;
+  appearance:none;
+  cursor:pointer;
+
+  background:
+    linear-gradient(145deg,#fff 0%,#fff 62%,var(--soft) 100%);
+
+  box-shadow:0 16px 38px rgba(48,48,54,.09);
+
+  transition:
+    transform .18s ease,
+    box-shadow .18s ease,
+    opacity .18s ease,
+    filter .18s ease;
+}
+
+.card::before{
+  position:absolute;
+  top:-45px;
+  right:-40px;
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  content:"";
+  background:var(--strong);
+  z-index:0;
+}
+
+.card > *{
+  position:relative;
+  z-index:1;
+}
+
+.card:hover:not(:disabled){
+  transform:translateY(-6px);
+  box-shadow:0 22px 48px rgba(48,48,54,.14);
+}
+
+.card:focus-visible{
+  outline:4px solid #303036;
+  outline-offset:4px;
+}
+
+.card:disabled{
+  cursor:not-allowed;
+  opacity:.30;
+  filter:grayscale(.75);
+  transform:none;
+}
+
+.card.selected{
+  opacity:1;
+  filter:none;
+  transform:translateY(-3px);
+  box-shadow:0 22px 48px var(--strong);
+}
+
+.exercise{
+  --accent:var(--active);
+  --soft:rgba(245,138,31,.08);
+  --strong:rgba(245,138,31,.18);
+}
+
+.eat{
+  --accent:var(--eat);
+  --soft:rgba(244,204,9,.10);
+  --strong:rgba(244,204,9,.22);
+}
+
+.screen{
+  --accent:var(--screen);
+  --soft:rgba(238,77,155,.08);
+  --strong:rgba(238,77,155,.18);
+}
+
+.sleep{
+  --accent:var(--sleep);
+  --soft:rgba(0,158,226,.08);
+  --strong:rgba(0,158,226,.18);
+}
+
+.iconbox{
+  display:grid;
+  width:82px;
+  height:96px;
+  place-items:center;
+}
+
+.icon{
+  width:80px;
+  height:90px;
+  overflow:visible;
+}
+
+.title{
+  font-family:var(--rounded);
+  font-size:clamp(1.65rem,2.3vw,2rem);
+  font-weight:900;
+  letter-spacing:-.035em;
+  line-height:1;
+}
+
+.title span{
+  display:block;
+}
+
+.cardfoot{
+  grid-column:1/-1;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+}
+
+.selected-label{
+  display:none;
+  margin-right:auto;
+  padding:6px 10px;
+  border-radius:999px;
+  background:var(--strong);
+  font-size:.72rem;
+  font-weight:900;
+}
+
+.card.selected .selected-label{
+  display:inline-flex;
+}
+
+.arrow{
+  display:grid;
+  width:34px;
+  height:34px;
+  place-items:center;
+  border-radius:50%;
+  color:#fff;
+  background:var(--accent);
+  font-weight:900;
+}
+
+.footer{
+  margin-top:42px;
+  padding-top:18px;
+  border-top:1px solid rgba(48,48,54,.08);
+  color:#777780;
+  font-size:.82rem;
+  text-align:center;
+}
+
+@media(max-width:1050px){
+  .grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+
+@media(max-width:580px){
+  .page{
+    width:min(100% - 24px,520px);
+    padding-top:26px;
   }
 
-  /* Styling for the revised instruction */
-  .final-note {
-    display: block !important;
-    max-width: 760px;
-    margin: 14px auto 0;
-    color: #66666f;
-    font-size: 1rem;
-    font-weight: 700;
-    line-height: 1.5;
-    text-align: center;
+  .logo{
+    width:100px;
   }
 
-  /* Styling for the message shown after selection */
-  #status {
-    max-width: 760px;
-    margin: 20px auto 0;
-    color: #303036 !important;
-    font-size: 1rem;
-    line-height: 1.5;
-    text-align: center;
+  .grid{
+    grid-template-columns:1fr;
+    gap:13px;
   }
 
-  #status strong {
-    display: block;
-    margin-bottom: 2px;
-    color: #303036;
-    font-family:
-      ui-rounded,
-      "Arial Rounded MT Bold",
-      "Trebuchet MS",
-      Arial,
-      sans-serif;
-    font-size: 1.15rem;
-    font-weight: 900;
+  .card{
+    min-height:132px;
+    grid-template-columns:72px minmax(0,1fr) 34px;
+    grid-template-rows:1fr;
+    gap:8px 12px;
+    padding:18px;
   }
 
-  #status .resource-message {
-    display: block;
+  .iconbox{
+    width:72px;
+    height:82px;
   }
 
-  #status a {
-    color: #34788c;
-    font-weight: 700;
-    text-decoration: underline;
-    text-underline-offset: 2px;
+  .icon{
+    width:72px;
+    height:82px;
   }
+
+  .title{
+    font-size:clamp(1.8rem,9vw,2.15rem);
+  }
+
+  .cardfoot{
+    display:contents;
+  }
+
+  .selected-label{
+    display:none !important;
+  }
+
+  .arrow{
+    grid-column:3;
+    grid-row:1;
+    align-self:center;
+  }
+}
 </style>
+</head>
+
+<body>
+
+<main class="page">
+
+<header class="hero">
+
+<!-- ACTUAL GROW WELL SG LOGO -->
+
+<img
+  class="logo"
+  alt="Grow Well SG logo"
+  src="data:image/webp;base64,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"
+/>
+
+<p class="eyebrow">
+  GOT 10 MINUTES? LET’S GROW WELL TOGETHER!
+</p>
+
+<h1>
+  Pick one of the following
+</h1>
+
+<p class="subtext">
+  You can redeem the others as you explore other Grow Well SG spots.
+</p>
+
+<p
+  class="status"
+  id="status"
+  role="status"
+  aria-live="polite"
+></p>
+
+</header>
+
+
+<section
+  class="grid"
+  aria-label="Grow Well SG choices"
+>
+
+<button
+  class="card exercise"
+  type="button"
+  data-pillar="exercise"
+  data-label="Exercise Well"
+  data-url="https://www.healthhub.sg/programmes/parent-hub/grow-well-sg/nurture-healthy-behaviours"
+>
+
+<span class="iconbox" aria-hidden="true">
+
+<svg class="icon" viewBox="0 0 96 96">
+
+<ellipse
+  cx="48"
+  cy="83"
+  rx="35"
+  ry="5"
+  fill="#303036"
+  opacity=".10"
+/>
+
+<path
+  d="M54 8c8 2 13 5 15 10l-9 25-22-8 8-23c1-4 4-5 8-4Z"
+  fill="#ffd2c2"
+/>
+
+<path
+  d="M34 34l28 10-8 20-29-10Z"
+  fill="#ffcf4a"
+/>
+
+<path
+  d="M30 41l27 10-3 8-27-10Z"
+  fill="#725fd4"
+/>
+
+<path
+  d="M22 49c8 4 17 8 28 10 7 2 15 2 22 5 6 3 9 8 8 13-1 5-5 8-11 8H24c-8 0-13-4-13-10 0-5 4-9 11-13Z"
+  fill="#7364d9"
+/>
+
+<path
+  d="M17 72h57c3 0 5 2 5 5s-2 5-5 5H23c-7 0-11-3-12-8 2-1 4-2 6-2Z"
+  fill="#f5a24a"
+/>
+
+</svg>
+
+</span>
+
+<span class="title">
+  <span>Exercise</span>
+  <span>Well</span>
+</span>
+
+<span class="cardfoot">
+  <span class="selected-label">Selected</span>
+  <span class="arrow">↗</span>
+</span>
+
+</button>
+
+
+<button
+  class="card eat"
+  type="button"
+  data-pillar="eat"
+  data-label="Eat Well"
+  data-url="https://ch-api.healthhub.sg/api/public/content/2ed081967a9748308d94e6bdde70131d?v=570b7ab3"
+>
+
+<span class="iconbox" aria-hidden="true">
+
+<svg class="icon" viewBox="0 0 96 96">
+
+<circle
+  cx="48"
+  cy="48"
+  r="40"
+  fill="#fff"
+  stroke="#d9d9d9"
+  stroke-width="4"
+/>
+
+<path
+  d="M48 12A36 36 0 0 0 16 31l32 17Z"
+  fill="#f6c845"
+/>
+
+<path
+  d="M16 31a36 36 0 0 0 0 34l32-17Z"
+  fill="#8bcf69"
+/>
+
+<path
+  d="M16 65a36 36 0 0 0 32 19V48Z"
+  fill="#f3a74f"
+/>
+
+<path
+  d="M48 12a36 36 0 0 1 32 19L48 48Z"
+  fill="#6fc56f"
+/>
+
+<path
+  d="M80 31a36 36 0 0 1 0 34L48 48Z"
+  fill="#f4e3b2"
+/>
+
+<path
+  d="M80 65A36 36 0 0 1 48 84V48Z"
+  fill="#f16f68"
+/>
+
+</svg>
+
+</span>
+
+<span class="title">
+  <span>Eat</span>
+  <span>Well</span>
+</span>
+
+<span class="cardfoot">
+  <span class="selected-label">Selected</span>
+  <span class="arrow">↗</span>
+</span>
+
+</button>
+
+
+<button
+  class="card screen"
+  type="button"
+  data-pillar="screen"
+  data-label="Screen Well"
+  data-url="https://syn-p-001.sitecorecontenthub.cloud/api/public/content/fd656cc80d6a4edba97a1407c8323298"
+>
+
+<span class="iconbox" aria-hidden="true">
+
+<svg class="icon" viewBox="0 0 96 96">
+
+<circle
+  cx="48"
+  cy="48"
+  r="39"
+  fill="#f0e8f8"
+/>
+
+<g transform="rotate(12 48 48)">
+
+<rect
+  x="30"
+  y="9"
+  width="36"
+  height="78"
+  rx="6"
+  fill="#6948a8"
+/>
+
+<rect
+  x="34"
+  y="17"
+  width="28"
+  height="60"
+  rx="2"
+  fill="#a98bd7"
+/>
+
+<path
+  d="M38 67 59 25M43 72l18-37"
+  stroke="#fff"
+  stroke-width="3"
+  stroke-linecap="round"
+/>
+
+</g>
+
+</svg>
+
+</span>
+
+<span class="title">
+  <span>Screen</span>
+  <span>Well</span>
+</span>
+
+<span class="cardfoot">
+  <span class="selected-label">Selected</span>
+  <span class="arrow">↗</span>
+</span>
+
+</button>
+
+
+<button
+  class="card sleep"
+  type="button"
+  data-pillar="sleep"
+  data-label="Sleep Well"
+  data-url="https://syn-p-001.sitecorecontenthub.cloud/api/public/content/bc9554b4b9674cec8510d709a15da9d4?v=2e9b894c"
+>
+
+<span class="iconbox" aria-hidden="true">
+
+<svg class="icon" viewBox="0 0 96 96">
+
+<rect
+  x="12"
+  y="49"
+  width="72"
+  height="21"
+  rx="3"
+  fill="#9c4e1f"
+/>
+
+<rect
+  x="18"
+  y="42"
+  width="60"
+  height="17"
+  rx="7"
+  fill="#fff"
+/>
+
+<path
+  d="M41 45h32c5 0 8 4 8 8v8H41Z"
+  fill="#6fc660"
+/>
+
+<rect
+  x="21"
+  y="45"
+  width="24"
+  height="12"
+  rx="6"
+  fill="#f5d84e"
+/>
+
+<rect
+  x="9"
+  y="32"
+  width="8"
+  height="53"
+  rx="2"
+  fill="#a65423"
+/>
+
+<rect
+  x="79"
+  y="52"
+  width="8"
+  height="33"
+  rx="2"
+  fill="#a65423"
+/>
+
+<path
+  d="M37 16h24c5 0 9 4 9 9v12c0 5-4 9-9 9H49l-8 7 2-7h-6c-5 0-9-4-9-9V25c0-5 4-9 9-9Z"
+  fill="#f2cf0b"
+/>
+
+<text
+  x="36"
+  y="34"
+  fill="#fff"
+  font-family="Arial"
+  font-size="14"
+  font-weight="900"
+>
+ZZ
+</text>
+
+</svg>
+
+</span>
+
+<span class="title">
+  <span>Sleep</span>
+  <span>Well</span>
+</span>
+
+<span class="cardfoot">
+  <span class="selected-label">Selected</span>
+  <span class="arrow">↗</span>
+</span>
+
+</button>
+
+</section>
+
+
+<footer class="footer">
+  Grow Well SG resource gateway for event participants
+</footer>
+
+</main>
+
 
 <script>
 (() => {
+
   "use strict";
 
   /*
-    This update changes only the displayed wording.
-    It does not change the existing resource links,
-    logo, localStorage, or single-choice logic.
+    New storage key so old test choices
+    from previous versions do not affect this page.
   */
 
-  const eyebrow =
-    document.querySelector(".eyebrow");
+  const STORAGE_KEY =
+    "gwsg_choice_clean_v1";
 
-  const heading =
-    document.querySelector(".hero h1") ||
-    document.querySelector("h1");
-
-  const subtitle =
-    document.querySelector(".subtitle");
-
-  let finalNote =
-    document.querySelector(".final-note");
+  const cards =
+    [...document.querySelectorAll(".card")];
 
   const status =
     document.getElementById("status");
 
 
-  /*
-    1. Update the small heading
-  */
+  function readChoice(){
 
-  if (eyebrow) {
-    eyebrow.textContent =
-      "GOT 10 MINUTES? LET’S GROW WELL TOGETHER!";
-  }
+    try{
 
+      const pillar =
+        localStorage.getItem(
+          STORAGE_KEY
+        );
 
-  /*
-    2. Update the main heading
-  */
+      if(!pillar){
+        return null;
+      }
 
-  if (heading) {
-    heading.textContent =
-      "Pick one of the following";
-  }
+      const card =
+        cards.find(
+          card =>
+            card.dataset.pillar === pillar
+        );
 
+      if(!card){
+        return null;
+      }
 
-  /*
-    3. Remove the previous subtitle
-  */
+      return {
+        pillar:card.dataset.pillar,
+        label:card.dataset.label,
+        url:card.dataset.url
+      };
 
-  if (subtitle) {
-    subtitle.remove();
-  }
-
-
-  /*
-    4. Update or create the instruction below
-       the main heading
-  */
-
-  if (!finalNote && heading) {
-    finalNote =
-      document.createElement("p");
-
-    finalNote.className =
-      "final-note";
-
-    heading.insertAdjacentElement(
-      "afterend",
-      finalNote
-    );
-  }
-
-  if (finalNote) {
-    finalNote.textContent =
-      "You can redeem the others as you explore other Grow Well SG spots.";
-  }
-
-
-  /*
-    5. Replace the message shown after a pillar
-       has been selected
-  */
-
-  function updateSelectedMessage() {
-    if (!status) {
-      return;
     }
 
-    const selectedCard =
-      document.querySelector(".card.selected");
+    catch(error){
 
-    if (!selectedCard) {
-      return;
+      return null;
+
     }
 
-    const label =
-      selectedCard.dataset.label ||
-      selectedCard
-        .querySelector(".title")
-        ?.textContent
-        .replace(/\s+/g, " ")
-        .trim() ||
-      "your selected pillar";
+  }
 
-    /*
-      Avoid repeatedly replacing the same message.
-    */
 
-    const messageIsAlreadyUpdated =
-      status.dataset.copyFor === label &&
-      status.textContent.includes(
-        "For more resources, please visit"
+  function saveChoice(pillar){
+
+    try{
+
+      localStorage.setItem(
+        STORAGE_KEY,
+        pillar
       );
 
-    if (messageIsAlreadyUpdated) {
-      return;
+      return (
+        localStorage.getItem(
+          STORAGE_KEY
+        ) === pillar
+      );
+
     }
 
-    status.dataset.copyFor =
-      label;
+    catch(error){
+
+      return false;
+
+    }
+
+  }
+
+
+  function applyLockedState(choice){
+
+    cards.forEach(
+      card => {
+
+        const selected =
+          card.dataset.pillar ===
+          choice.pillar;
+
+        /*
+          All four are disabled after one choice.
+        */
+
+        card.disabled = true;
+
+        card.classList.toggle(
+          "selected",
+          selected
+        );
+
+      }
+    );
+
 
     status.innerHTML =
-      `<strong>You’ve chosen ${label}!</strong>` +
-      `<span class="resource-message">` +
+      `<strong>You’ve chosen ${choice.label}!</strong>` +
       `For more resources, please visit ` +
       `<a ` +
       `href="https://www.healthhub.sg/programmes/parent-hub/grow-well-sg" ` +
       `target="_blank" ` +
       `rel="noopener noreferrer"` +
-      `>Parent Hub</a>.` +
-      `</span>`;
+      `>Parent Hub</a>.`;
+
   }
 
 
-  /*
-    Watch for the original single-choice script
-    to display its selected message, then replace
-    that message with the new copy.
-  */
+  function openResource(url){
 
-  if (status) {
-    const observer =
-      new MutationObserver(
-        updateSelectedMessage
+    const resourceWindow =
+      window.open(
+        url,
+        "_blank",
+        "noopener,noreferrer"
       );
 
-    observer.observe(
-      status,
-      {
-        childList: true,
-        subtree: true,
-        characterData: true
-      }
-    );
+    /*
+      If the browser blocks the new tab,
+      open the resource in the current tab.
+    */
+
+    if(!resourceWindow){
+
+      window.location.href =
+        url;
+
+    }
+
   }
 
 
-  /*
-    Update immediately if this browser has already
-    selected a pillar.
-  */
+  function choose(card){
 
-  updateSelectedMessage();
+    /*
+      If a choice already exists,
+      do not allow another one.
+    */
+
+    const existing =
+      readChoice();
+
+    if(existing){
+
+      applyLockedState(
+        existing
+      );
+
+      return;
+
+    }
 
 
-  /*
-    Update again when returning from the resource.
-  */
+    const saved =
+      saveChoice(
+        card.dataset.pillar
+      );
 
-  window.addEventListener(
-    "pageshow",
-    updateSelectedMessage
+
+    if(!saved){
+
+      status.innerHTML =
+        `<strong>We couldn't save your selection.</strong>` +
+        `Please allow site storage in your browser and try again.`;
+
+      return;
+
+    }
+
+
+    const choice =
+      readChoice();
+
+
+    if(!choice){
+      return;
+    }
+
+
+    /*
+      Lock the page BEFORE opening the resource.
+    */
+
+    applyLockedState(
+      choice
+    );
+
+
+    /*
+      Open only the selected resource.
+    */
+
+    openResource(
+      choice.url
+    );
+
+  }
+
+
+  cards.forEach(
+    card => {
+
+      card.addEventListener(
+        "click",
+        () => choose(card)
+      );
+
+    }
   );
 
-  window.addEventListener(
-    "focus",
-    updateSelectedMessage
-  );
+
+  /*
+    If this browser already selected a pillar,
+    restore the locked view.
+
+    Do NOT automatically open any resource.
+  */
+
+  const savedChoice =
+    readChoice();
+
+  if(savedChoice){
+
+    applyLockedState(
+      savedChoice
+    );
+
+  }
 
 })();
 </script>
+
+</body>
+</html>
